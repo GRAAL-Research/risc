@@ -6,3 +6,4 @@ faker-vehicle
 scipy
 python-dateutil
 babel
+numpy
