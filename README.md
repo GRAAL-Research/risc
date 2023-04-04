@@ -27,8 +27,8 @@ deterministic; thus, it can generate an aligned insurance contract (i.e. same dr
 RISC uses a pretrained TVAE model on a private dataset to generate look-a-like car protections.
 See our [article here]() for more detail about RISC implementation and generated dataset specification.
 
-RISC was written in Python 3.9 and is compatible with the __latest version of PyTorch__ and  
-__Python >= 3.8__ (**SciPy seems difficult to build on Python 3.11. Thus, we don't support Python 3.11 for now).
+RISC was written in Python 3.9 and is compatible with the __latest version of PyTorch__ and __Python >= 3.8__ (**SciPy
+seems difficult to build on Python 3.11. Thus, we don't support Python 3.11 for now**).
 
 ## Getting Started:
 
@@ -62,9 +62,6 @@ class RuleBaseFPQ1ContractFaker(FPQ1ContractFaker):
         )
         super().__init__(protection_faker, language, seed=seed)
 ```
-
-
-
 
 ------------------
 
