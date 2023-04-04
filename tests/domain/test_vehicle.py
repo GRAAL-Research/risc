@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from risc import Vehicle
+from risc_generator import Vehicle
 
 
 class VehicleTest(TestCase):

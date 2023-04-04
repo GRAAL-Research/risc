@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest.mock import ANY
 
-from risc import property_coverage_faker
+from risc_generator import property_coverage_faker
 
 INCLUDE = "include"
 EXCLUDE = "exclude"

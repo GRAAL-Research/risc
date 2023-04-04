@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from risc import Protections
+from risc_generator import Protections
 
 INCLUDE = "include"
 EXCLUDE = "exclude"

@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from risc import QuebecPurchaseConditionFaker
+from risc_generator import QuebecPurchaseConditionFaker
 
 
 class QuebecPurchaseConditionFakerTests(TestCase):

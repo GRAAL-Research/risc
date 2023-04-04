@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from risc import (
+from risc_generator import (
     liability_coverage_amount_faker,
     b1_deductible_faker,
     b2_deductible_faker,

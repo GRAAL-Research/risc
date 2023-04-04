@@ -1,5 +1,5 @@
-from risc import FPQ1Contract
-from risc.content.en.endorsements.endorsement_header import generate_endorsement_page_header_text
+from risc_generator import FPQ1Contract
+from risc_generator.content.en.endorsements.endorsement_header import generate_endorsement_page_header_text
 from tests.domain.contract.contract_base import ContractTestBase
 
 

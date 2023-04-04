@@ -1,7 +1,7 @@
 import re
 
-from risc import NEW_PAGE_TAG, FPQ1Contract
-from risc.content.en.fpq_1 import (
+from risc_generator import NEW_PAGE_TAG, FPQ1Contract
+from risc_generator.content.en.fpq_1 import (
     generate_toc_text,
     generate_introduction_text,
     generate_declarations_text,

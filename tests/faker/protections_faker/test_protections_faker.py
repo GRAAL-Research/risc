@@ -1,8 +1,8 @@
 from unittest import TestCase
 from unittest.mock import MagicMock
 
-from risc import Protections
-from risc import ProtectionsFaker
+from risc_generator import Protections
+from risc_generator import ProtectionsFaker
 
 
 class ProtectionsFakerTest(TestCase):

@@ -1,5 +1,5 @@
-from risc import Protections, FPQ1Contract, Premium
-from risc.content import en
+from risc_generator import Protections, FPQ1Contract, Premium
+from risc_generator.content import en
 from tests.domain.contract.contract_base import ContractTestBase
 
 INCLUDE = "include"

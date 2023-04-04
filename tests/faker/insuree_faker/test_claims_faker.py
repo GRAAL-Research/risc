@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from risc import ClaimsFaker
+from risc_generator import ClaimsFaker
 
 
 class ClaimsFakerTests(TestCase):

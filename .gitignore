@@ -132,4 +132,4 @@ dmypy.json
 .idea
 /datastore
 
-risc/version.py
+risc_generator/version.py

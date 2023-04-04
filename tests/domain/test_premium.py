@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from risc import Premium
+from risc_generator import Premium
 
 INCLUDE = "include"
 EXCLUDE = "exclude"

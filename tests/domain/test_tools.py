@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from risc import change_to_snake_case, change_to_camel_case
+from risc_generator import change_to_snake_case, change_to_camel_case
 
 
 class ContractFakerToolsTest(TestCase):

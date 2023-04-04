@@ -1,8 +1,8 @@
 import datetime
 from unittest import TestCase
 
-from risc import Protections, Insuree
-from risc.faker.contract_faker.premium_faker import QuebecPremiumFaker
+from risc_generator import Protections, Insuree
+from risc_generator.faker.contract_faker.premium_faker import QuebecPremiumFaker
 
 INCLUDE = "include"
 EXCLUDE = "exclude"

@@ -1,8 +1,8 @@
 import datetime
 from unittest.mock import patch
 
-from risc import Protections
-from risc.domain.contract import FPQ1Contract
+from risc_generator import Protections
+from risc_generator.domain.contract import FPQ1Contract
 from tests.domain.contract.contract_base import ContractTestBase
 
 INCLUDE = "include"

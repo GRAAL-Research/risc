@@ -45,7 +45,7 @@ def main():
 
     packages = find_packages()
     setup(
-        name="RISC",
+        name="risc_generator",
         version=version,
         author="David Beauchemin",
         author_email="david.beauchemin.5@ulaval.ca",

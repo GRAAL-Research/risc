@@ -2,7 +2,7 @@ from unittest import TestCase
 
 import datetime
 
-from risc import Insuree
+from risc_generator import Insuree
 
 
 class InsureeTest(TestCase):

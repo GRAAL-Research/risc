@@ -15,7 +15,7 @@ Pull requests are the best way to propose changes to the codebase. We actively w
 
 1. Fork the repo and create your branch from the **`dev` branch**.
 2. If you've added code that should be tested, you **must** ensure it is properly tested.
-3. If you've changed APIs, update the documentation.
+3. If you've changed APIs, update the in-code documentation.
 4. Ensure the CI/CD test suite passes.
 5. Make sure your code lints.
 6. Submit that pull request!
@@ -45,7 +45,7 @@ We use GitHub issues to track enhancement requests.  Before you create an enhanc
 * Make sure you have a clear idea of the enhancement you would like.  If you have a vague idea, consider discussing
 it first on the users list.
 
-* Check the documentation to make sure your feature does not already exist.
+* Check the in-code documentation to make sure your feature does not already exist.
 
 * Do a [quick search](https://github.com/GRAAL-Research/risc/issues) to see whether your enhancement has already been suggested.
 
@@ -60,17 +60,16 @@ When creating your enhancement request, please:
 
 ## Prerequisites
 
-We created three requirements files to install all the tools used for the development of the library. `tests/requirements.txt` define the requirements for the tests, `styling_requirements.txt` for the styling and `docs/requirements.txt` for the documentation.
+We created three requirements files to install all the tools used for the development of the library. `tests/requirements.txt` define the requirements for the tests.
 
 You can install all the requirements with
 
 ``` shell
 pip install -r tests/requirements.txt
 pip install -r styling_requirements.txt
-pip install -r docs/requirements.txt
 ```
 
-Also, you should run `python setup.py develop` to build the project and be able to build the documentation.
+Also, you should run `python setup.py develop` to build the project.
 ``` shell
 python setup.py develop
 ```
@@ -118,26 +117,7 @@ zsh -i run_tests_python_envs.sh # For ZSH terminal
 
 ## Documentation
 
-When submitting a pull request for a new feature, try to include documentation for the new objects/modules introduced and their public methods.
-
- All of RISC's html documentation is automatically generated from the Python files' documentation. To have a preview of what the final html will look like with your modifications, first start by rebuilding the html pages.
-
- ``` shell
-cd docs
-./rebuild_html_doc.sh
- ```
-
-You can then see the local html files in your favorite browser. Here is an example using Firefox:
-
-``` shell
-firefox _build/html/index.html
-```
-
-or using Python
-
-```shell
-python -m http.server -d _build/html/
-```
+When submitting a pull request for a new feature, try to include in-code documentation for the new objects/modules introduced and their public methods.
 
 ## License
 By contributing, you agree that your contributions will be licensed under its LGPLv3 License.

@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from risc import generate_a_client_number
+from risc_generator import generate_a_client_number
 
 
 class ContractFakerToolsTest(TestCase):

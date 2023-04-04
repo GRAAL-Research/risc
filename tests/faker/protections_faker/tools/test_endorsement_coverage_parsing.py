@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from risc import endorsement_coverage_parsing
+from risc_generator import endorsement_coverage_parsing
 
 INCLUDE = "include"
 EXCLUDE = "exclude"

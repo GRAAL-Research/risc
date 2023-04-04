@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from risc import DriverLicenseSuspensionFaker
+from risc_generator import DriverLicenseSuspensionFaker
 
 
 class DiverLicenseSuspensionFakerTests(TestCase):

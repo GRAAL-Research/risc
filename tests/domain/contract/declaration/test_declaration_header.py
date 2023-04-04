@@ -1,5 +1,5 @@
-from risc import FPQ1Contract, Protections, Premium
-from risc.content import fr, en
+from risc_generator import FPQ1Contract, Protections, Premium
+from risc_generator.content import fr, en
 from tests.domain.contract.contract_base import ContractTestBase
 
 

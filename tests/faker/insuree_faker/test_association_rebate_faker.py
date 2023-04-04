@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from risc import association_rebate_faker
+from risc_generator import association_rebate_faker
 
 
 class AssociationRebateFakerTests(TestCase):

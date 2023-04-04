@@ -2,9 +2,9 @@ import datetime
 from unittest import TestCase
 from unittest.mock import MagicMock
 
-from risc import Protections, Premium
-from risc.domain.insuree import Insuree
-from risc.domain.vehicle import Vehicle
+from risc_generator import Protections, Premium
+from risc_generator.domain.insuree import Insuree
+from risc_generator.domain.vehicle import Vehicle
 
 INCLUDE = "include"
 EXCLUDE = "exclude"

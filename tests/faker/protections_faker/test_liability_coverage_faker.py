@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from risc import liability_coverage_faker
+from risc_generator import liability_coverage_faker
 
 
 class LiabilityCoverageFakerTests(TestCase):

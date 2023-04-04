@@ -1,4 +1,4 @@
-from risc import Protections, FPQ1Contract
+from risc_generator import Protections, FPQ1Contract
 from tests.domain.contract.contract_base import ContractTestBase
 
 

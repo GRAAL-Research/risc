@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from risc import SexFaker
+from risc_generator import SexFaker
 
 
 class SexFakerTests(TestCase):

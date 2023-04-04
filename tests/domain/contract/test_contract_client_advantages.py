@@ -1,4 +1,4 @@
-from risc import FPQ1Contract, Protections, Insuree, Vehicle
+from risc_generator import FPQ1Contract, Protections, Insuree, Vehicle
 from tests.domain.contract.contract_base import ContractTestBase
 
 

@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from risc import (
+from risc_generator import (
     is_valid_protections,
     is_only_liability_coverage,
     include_b1_coverage,

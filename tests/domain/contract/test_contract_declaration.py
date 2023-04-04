@@ -2,8 +2,8 @@ import datetime
 import re
 from unittest.mock import patch
 
-from risc import FPQ1Contract
-from risc.content import fr, en
+from risc_generator import FPQ1Contract
+from risc_generator.content import fr, en
 from tests.domain.contract.contract_base import ContractTestBase
 
 

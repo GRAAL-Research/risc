@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest.mock import patch
 
-from risc import FinancingFaker
+from risc_generator import FinancingFaker
 
 
 class FinancingFakerTest(TestCase):

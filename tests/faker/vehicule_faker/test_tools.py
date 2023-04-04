@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from risc import generate_vin, is_valid_vehicle_year
+from risc_generator import generate_vin, is_valid_vehicle_year
 
 
 class ToolsTest(TestCase):

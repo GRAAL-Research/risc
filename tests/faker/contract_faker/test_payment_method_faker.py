@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from risc import payment_method_faker, PaymentMethodFaker
+from risc_generator import payment_method_faker, PaymentMethodFaker
 
 
 class PaymentMethodFakerTests(TestCase):

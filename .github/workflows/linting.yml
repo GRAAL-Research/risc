@@ -23,4 +23,4 @@ jobs:
           pip install -e .
       - name: PyLint
         run: |
-          pylint risc/ tests/ examples/
+          pylint risc/ tests/
