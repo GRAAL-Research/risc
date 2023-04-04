@@ -131,3 +131,5 @@ dmypy.json
 #PyCharm bullshit
 .idea
 /datastore
+
+risc/version.py
