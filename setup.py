@@ -1,3 +1,4 @@
+import glob
 import os
 import subprocess
 
@@ -66,6 +67,8 @@ def main():
             "Topic :: Scientific/Engineering :: Artificial Intelligence",
         ],
         packages=packages,
+        data_files=[("resources", glob.glob('*/*/*.pkl'))],
+        include_package_data=True,
         python_requires=">=3.8",
         description="RISC, an open-source Python package data generator. RISC generates look-alike automobile "
         "insurance contracts based on the Quebec regulatory insurance form in French and English.",
