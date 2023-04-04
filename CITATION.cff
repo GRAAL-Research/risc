@@ -5,6 +5,6 @@ preferred-citation:
   authors:
   - family-names: "Beauchemin"
     given-names: "David"
-  title: "RISC: Generating Realistic Synthetic Bilingual Insurance Contract"
+  title: "RISC: an open-source Python package data generator to generates look-alike automobile insurance contracts based on the Quebec regulatory insurance form in French and English"
   url: "https://github.com/GRAAL-Research/risc"
   year: 2023
