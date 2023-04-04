@@ -1,0 +1,63 @@
+from ..endorsements.endorsement_header import generate_endorsement_page_header_text
+from ...config import NEW_PAGE_TAG
+
+
+@staticmethod
+def generate_faq3_endorsement_text() -> str:
+    endorsement_header_text = generate_endorsement_page_header_text()
+    text = (
+        f"{endorsement_header_text}"
+        "Formulaire d'avenant du Québec\n"
+        "F.A.Q. N 3\n"
+        "Garantie « responsabilité civile » pour le véhicule d'un gouvernement canadien\n"
+        "Le titre de l'avenant doit être écrit à la section « Conditions particulières » du contrat "
+        "d'assurance. Quant aux informations requises dans l'avenant, elles peuvent être écrites à "
+        "cette section ou dans l'avenant même, au choix de l'assureur.\n"
+        "Nom de l'assureur : \n"
+        "Nom de l'assuré désigné : \n"
+        "Avenant à la police d'assurance automobile N :\n"
+        "Date de prise d'effet : cet avenant s'applique à partir du à 0 h 01, heure normale "
+        "à l'adresse de l'assuré désigné.\n"
+        "Prime d'assurance additionnelle à payer :\n"
+        "\t Montants à payer :  \n"
+        "\t Date limite pour payer :  \n"
+        "Description de l'avenant\n"
+        "Cet avenant étend la garantie « responsabilité civile » du contrat d'assurance au véhicule "
+        "d'un gouvernement canadien dont la personne assurée a la garde ou sur lequel elle a un "
+        "pouvoir de direction ou de gestion. Cet avenant couvre les conséquences financières que "
+        "peut subir cette personne assurée lorsqu'elle est civilement responsable :\n"
+        "1. Au chapitre A :\n"
+        "\t d'un dommage causé à une autre personne par le véhicule ou ses équipements et accessoires.\n"
+        "2. Au chapitre B :\n"
+        "\t d'un dommage direct et accidentel causé au véhicule ou à ses équipements et accessoires; ou\n"
+        "\t de la disparition du véhicule ou de ses équipements et accessoires.\n"
+        "La responsabilité civile peut être contractuelle ou extracontractuelle.\n"
+        "Personne assurée\n"
+        "L'expression « personne assurée » utilisée dans cet avenant fait référence aux personnes suivantes :\n"
+        "\t l'assuré désigné;\n"
+        "\t son conjoint;\n"
+        "\t toute personne qui conduit le véhicule ou en fait usage.\n"
+        "Conditions d'application\n"
+        "Cet avenant ne s'applique pas si la personne assurée a la garde de plusieurs véhicules "
+        "d'un gouvernement canadien à la fois. Il ne s'applique pas non plus si elle a un pouvoir "
+        "de direction ou de gestion sur plusieurs de ces véhicules à la fois.\n"
+        f"{NEW_PAGE_TAG}\n"
+        f"{endorsement_header_text}"
+        "Risques couverts, montant d'assurance, franchises et primes d'assurance\n"
+        "Les risques couverts par cet avenant sont ceux pour lesquels un montant d'assurance, une franchise "
+        "ou une prime d'assurance est écrit au tableau ci-dessous, ou écrit spécifiquement pour cet avenant "
+        "à la section « Conditions particulières » du contrat d'assurance.\n"
+        "GARANTIES | RISQUES | MONTANT D'ASSURANCE ET FRANCHISES | PRIMES D'ASSURANCE\n"
+        "Chapitre A : Responsabilité civile | Dommages matériels ou dommages corporels causés à "
+        "d'autres personnes | Montant d'assurance :  $ |  $\n"
+        "Chapitre B : Dommages aux véhicules assurés | Protection 1 : « Tous risques », Protection 2 : "
+        "Risques de collision et de renversement, Protection 3 : Tous les risques sauf collision ou renversement, "
+        "Protection 4 : Risques spécifiques | Franchise par sinistre : $ $ $ $ | $ $ $ $\n"
+        "  |  | Total: | $\n"
+        "Pour le chapitre B, la garantie de cet avenant s'applique pour un montant maximum de  $ "
+        "par sinistre, auquel s'ajoutent les frais, les dépens et les intérêts qui découlent d'une poursuite.\n"
+        "Toutes les autres conditions du contrat d'assurance restent les mêmes.\n"
+        f"{NEW_PAGE_TAG}\n"
+    )
+
+    return text

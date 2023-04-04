@@ -1,0 +1,62 @@
+from ..endorsements.endorsement_header import generate_endorsement_page_header_text
+from ...config import NEW_PAGE_TAG
+
+
+@staticmethod
+def generate_faq16_endorsement_text() -> str:
+    endorsement_header_text = generate_endorsement_page_header_text()
+    text = (
+        f"{endorsement_header_text}"
+        "Quebec Endorsement Form\n"
+        "Q.E.F. N 16\n"
+        "Suspension of coverage during vehicle storage\n"
+        "The endorsement heading must be entered in the ''Declarations'' section of the insurance contract. "
+        "Details required for the endorsement may be entered in the ''Declarations'' section or in "
+        "the endorsement itself, at the insurer's option.\n"
+        "Name of insurer: \n"
+        "Named insured: \n"
+        "Endorsement to automobile insurance policy N: \n"
+        "Effective date: This endorsement will apply from  at 12:01 A.M. "
+        "standard time at the address of the named insured.\n"
+        "Date of storage:  at 12:01 A.M. standard time at the address of the named insured.\n"
+        "Specified vehicle: This endorsement will apply only to the following described vehicle:\n"
+        "(reference number shown in the ''Declarations'' section of the insurance contract)\n"
+        "Endorsement description\n"
+        "This endorsement suspends certain coverage under the insurance contract due "
+        "to storage of the specified vehicle.\n"
+        "Suspension of coverage\n"
+        "The named insured declares that the specified vehicle will be withdrawn from use "
+        "and stored as of the date of storage and therefore requests that the following coverage "
+        "be suspended from that date:\n"
+        "1. Suspended coverage under Section A\n"
+        "Coverage under Section A of the insurance contract is suspended with regard to the "
+        "driving or use of the following vehicles:\n"
+        "\t specified vehicle;\n"
+        "\t any vehicle of which the named insured has recently become the owner that "
+        "replaces or is in addition to the specified vehicle;\n"
+        "\t any temporary substitute vehicle that replaces the specified vehicle.\n"
+        "The named insured will continue to benefit from the other coverage under Section A.\n"
+        "2. Suspended coverage under Section B\n"
+        "Coverage under Protections 1 and 2, Section B of the insurance contract is suspended "
+        "with regard to the driving or use of the following vehicles:\n"
+        "\t specified vehicle;\n"
+        "\t any vehicle of which the named insured has recently become the owner that "
+        "replaces or is in addition to the specified vehicle;\n"
+        "\t any temporary substitute vehicle that replaces the specified vehicle.\n"
+        "The named insured will continue to benefit from the other coverage under Section B.\n"
+        f"{NEW_PAGE_TAG}\n"
+        f"{endorsement_header_text}"
+        "End of suspension of coverage\n"
+        "The suspended coverage will be reinstated on one of the following dates:\n"
+        "\t on the date determined by the named insured, if he or she has first informed the "
+        "insurer accordingly;\n"
+        "\t if no date has thus been determined, on the April 1st following the date of storage.\n"
+        "The insurance contract must be in force for coverage to be reinstated.\n"
+        "Rebate\n"
+        "The named insured is entitled to a rebate for the storage period, calculated on the following basis:"
+        "\n"
+        "All other conditions of the insurance contract remain the same.\n"
+        f"{NEW_PAGE_TAG}\n"
+    )
+
+    return text

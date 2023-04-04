@@ -1,0 +1,63 @@
+from ..endorsements.endorsement_header import generate_endorsement_page_header_text
+from ...config import NEW_PAGE_TAG
+
+
+@staticmethod
+def generate_faq3_endorsement_text() -> str:
+    endorsement_header_text = generate_endorsement_page_header_text()
+    text = (
+        f"{endorsement_header_text}"
+        "Quebec Endorsement Form\n"
+        "Q.E.F. N 3\n"
+        "''Civil liability'' coverage for vehicle owned by any Canadian government\n"
+        "The endorsement heading must be entered in the ''Declarations'' section of the insurance contract."
+        "Details required for the endorsement may be entered in the ''Declarations'' section or in the endorsement"
+        "itself, at the insurer's option.\n"
+        "Name of insurer: \n"
+        "Named insured: \n"
+        "Endorsement to automobile insurance policy N:\n"
+        "Effective date: This endorsement will apply from  at 12:01 A.M. "
+        "standard time at the address of the named insured.\n"
+        "Additional insurance premium payable:\n"
+        "\t Amount payable:  \n"
+        "\t Due date:  \n"
+        "Endorsement description\n"
+        "This endorsement extends ''civil liability'' coverage under the insurance contract to a vehicle "
+        "owned by any Canadian government in the care, custody or control of the insured person. "
+        "This endorsement covers the financial consequences that the insured person may suffer if held "
+        "civilly liable for:\n"
+        "1. Section A:\n"
+        "\t damage caused to another person by the vehicle or its equipment or accessories.\n"
+        "2. Section B:\n"
+        "\t any direct and accidental damage caused to the vehicle or its equipment or accessories; or\n"
+        "\t the disappearance of the vehicle or its equipment or accessories.\n"
+        "Civil liability may be contractual or extracontractual.\n"
+        "Insured person\n"
+        "In this ndorsement, ''insured person'' refers to:\n"
+        "\t the named insured;\n"
+        "\t his or her spouse;\n"
+        "\t any person who drives or uses the vehicle.\n"
+        "Application\n"
+        "This endorsement will not apply if several vehicles owned by any Canadian government are "
+        "at any one time in the care of the insured person. It also does not apply if several vehicles "
+        "are at any one time in the custody or control of the insured person.\n"
+        f"{NEW_PAGE_TAG}\n"
+        f"{endorsement_header_text}"
+        "Covered perils, amount of insurance, deductible and insurance premium\n"
+        "The perils covered by this endorsement are those for which an amount of insurance, a "
+        "deductible or an insurance premium is shown in the table below, or entered specifically for "
+        "this endorsement in the ''Declarations'' section of the insurance contract.\n"
+        "COVERAGE | PERILS | AMOUNT OF INSURANCE AND DEDUCTIBLE | INSURANCE PREMIUM\n"
+        "Section A: Civil liability | Property damage or bodily injury to another person "
+        "| Amount of insurance:  $ |  $\n"
+        "Section B: Damage to insured vehicles | Protection 1: ''All perils'', Protection 2: Perils "
+        "of collision and upset, Protection 3: All perils other than collision or upset, "
+        "Protection 4: Specific perils | Deductible per loss: $ $ $ $ | $ $ $ $\n"
+        "  |  | Total: | $\n"
+        "For Section B, coverage under this endorsement will apply up to a maximum amount "
+        "of  $ per loss, plus expenses, costs and interest arising from a lawsuit.\n"
+        "All other conditions of the insurance contract remain the same.\n"
+        f"{NEW_PAGE_TAG}\n"
+    )
+
+    return text

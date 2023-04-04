@@ -1,0 +1,61 @@
+from ..endorsements.endorsement_header import generate_endorsement_page_header_text
+from ...config import NEW_PAGE_TAG
+
+
+@staticmethod
+def generate_faq37ab_endorsement_text() -> str:
+    endorsement_header_text = generate_endorsement_page_header_text()
+    text = (
+        f"{endorsement_header_text}"
+        "Formulaire d'avenant du Québec\n"
+        "F.A.Q. N 37 (A-B)\n"
+        "Modifications aux garanties pour les accessoires électroniques\n"
+        "(Chapitre B)\n"
+        "Le titre de l'avenant doit être écrit à la section « Conditions particulières » du contrat "
+        "d'assurance. Quant aux informations requises dans l'avenant, elles peuvent être écrites à "
+        "cette section ou dans l'avenant même, au choix de l'assureur.\n"
+        "Nom de l'assureur : \n"
+        "Nom de l'assuré désigné : \n"
+        "Avenant à la police d'assurance automobile N :\n"
+        "Date de prise d'effet : cet avenant s'applique à partir du à 0 h 01, heure normale "
+        "à l'adresse de l'assuré désigné.\n"
+        "Véhicule visé : cet avenant s'applique uniquement au véhicule désigné suivant :\n"
+        "(numéro de référence écrit à la section « Conditions particulières » du contrat d'assurance)\n"
+        "Description de l'avenant\n"
+        "Selon l'option applicable, cet avenant modifie les garanties du chapitre B du contrat "
+        "d'assurance pour les « accessoires électroniques » qui ne sont pas des « accessoires "
+        "électroniques d'origine ».\n"
+        "Option A : Limitation de l'indemnité\n"
+        "En cas de sinistre couvert, l'indemnité du chapitre B se limite à …………….. $ pour l'ensemble "
+        "des « accessoires électroniques » endommagés qui ne sont pas des « accessoires électroniques "
+        "d'origine ».\n"
+        "De plus, l'indemnité ne peut jamais dépasser la « valeur au jour du sinistre » des « "
+        "accessoires électroniques » endommagés.\n"
+        "Cette limitation s'applique même lorsqu'un F.A.Q. N 43 (A à F) intitulé « Modification à "
+        "l'indemnisation » est annexé au contrat d'assurance.\n"
+        "Option B : Exclusion de la garantie\n"
+        "L'ensemble des « accessoires électroniques » qui ne sont pas des « accessoires "
+        "électroniques d'origine » sont exclus des garanties du chapitre B.\n"
+        "Définitions\n"
+        "1. Accessoires électroniques\n"
+        "L'expression « accessoires électroniques » utilisée dans cet avenant vise les appareils "
+        "électroniques :\n"
+        "qui sont fixés ou destinés à être fixés en permanence au véhicule visé; et\n"
+        "qui servent à la communication, à la reproduction ou à l'enregistrement du son ou de l'image, "
+        "ou des deux à la fois. Cela inclut, entre autres :\n"
+        "- les assistants de navigation personnels (GPS);\n"
+        "- les lecteurs de disques compacts et de DVD;\n"
+        f"{NEW_PAGE_TAG}\n"
+        f"{endorsement_header_text}"
+        "- les radios, y compris les radios C.B. et les émetteurs-récepteurs amateurs ou autres; et\n"
+        "les systèmes de son.\n"
+        "2. Accessoires électroniques d'origine\n"
+        "L'expression « accessoires électroniques d'origine » utilisée dans cet avenant vise les "
+        "accessoires électroniques décrits ci-dessus :\n"
+        "\t qui ont été installés par le fabricant ou le concessionnaire; et\n"
+        "\t qui étaient compris dans le prix d'achat original du véhicule visé.\n"
+        "Toutes les autres conditions du contrat d'assurance restent les mêmes.\n"
+        f"{NEW_PAGE_TAG}\n"
+    )
+
+    return text
