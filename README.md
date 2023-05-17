@@ -25,7 +25,8 @@ the Quebec regulatory insurance form in French and English.
 Use RISC to generate look-a-like Quebec Car insurance forms (FPQ1) both in French and English. RISC simulation is
 deterministic; thus, it can generate an aligned insurance contract (i.e. same driver data) using an initial seed.
 RISC uses a pretrained TVAE model on a private dataset to generate look-a-like car protections.
-See our [article here]() for more detail about RISC implementation and generated dataset specification.
+See our [article here](https://arxiv.org/abs/2304.04212) for more detail about RISC implementation and generated the 
+[RSICBAC](https://huggingface.co/datasets/davebulaval/RISCBAC) dataset specification.
 
 RISC was written in Python 3.9 and is compatible with the __latest version of PyTorch__ and __Python >= 3.8__ (**SciPy
 seems difficult to build on Python 3.11. Thus, we don't support Python 3.11 for now**).
@@ -93,7 +94,7 @@ Use the following for the article;
 Contract}},
     author={David Beauchemin and Richard Khoury},
     year={2023},
-    eprint={},
+    eprint={2304.04212},
     archivePrefix={arXiv}
 }
 ```
