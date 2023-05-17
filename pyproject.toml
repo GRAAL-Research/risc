@@ -3,3 +3,7 @@ line-length = 120
 skip-string-normalization = true
 required-version = "23.1.0"
 extend-exclude = "/(slides)/"
+
+testpaths = [
+    "tests",
+]
