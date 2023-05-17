@@ -1,6 +1,6 @@
 torch
 tqdm
-sdv>=1.1.0
+sdv
 faker
 faker-vehicle
 scipy
