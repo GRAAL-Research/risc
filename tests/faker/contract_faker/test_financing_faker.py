@@ -5,8 +5,8 @@ from risc_generator import FinancingFaker
 
 
 class FinancingFakerTest(TestCase):
-    @patch("risk.financing_faker.Faker")
-    @patch("risk.financing_faker.choice")
+    @patch("risc_generator.financing_faker.Faker")
+    @patch("risc_generator.financing_faker.choice")
     def test_whenFinancingFaker_thenReturnFinancingDetails(self, bank_faker, address_faker):
         bank_faker.return_value = "A Bank"
         address_faker().address.return_value = "An Address"

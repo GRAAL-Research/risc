@@ -15,7 +15,7 @@ class InsureeFakerTest(TestCase):
         insuree = insuree_faker.insuree()
         self.assertIsInstance(insuree, Insuree)
 
-    @patch("risk.insuree_faker.SexFaker")
+    @patch("risc_generator.insuree_faker.SexFaker")
     def test_givenCreateMaleFakeInsuree_whenInsuree_thenReturnAMaleInsuree(self, sex_faker_mock):
         sex_faker_mock().gender.return_value = "male"
         insuree_faker = InsureeFaker(self.a_en_locale)
@@ -27,7 +27,7 @@ class InsureeFakerTest(TestCase):
 
         self.assertEqual(actual_sex, expected_sex)
 
-    @patch("risk.insuree_faker.SexFaker")
+    @patch("risc_generator.insuree_faker.SexFaker")
     def test_givenCreateFemaleFakeInsuree_whenInsuree_thenReturnAFemaleInsuree(self, sex_faker_mock):
         sex_faker_mock().gender.return_value = "female"
         insuree_faker = InsureeFaker(self.a_en_locale)
@@ -39,7 +39,7 @@ class InsureeFakerTest(TestCase):
 
         self.assertEqual(actual_sex, expected_sex)
 
-    @patch("risk.insuree_faker.SexFaker")
+    @patch("risc_generator.insuree_faker.SexFaker")
     def test_givenCreateHommeFakeInsuree_whenInsuree_thenReturnAHommeInsuree(self, sex_faker_mock):
         sex_faker_mock().gender.return_value = "homme"
         insuree_faker = InsureeFaker(self.a_en_locale)
@@ -51,7 +51,7 @@ class InsureeFakerTest(TestCase):
 
         self.assertEqual(actual_sex, expected_sex)
 
-    @patch("risk.insuree_faker.SexFaker")
+    @patch("risc_generator.insuree_faker.SexFaker")
     def test_givenCreateFemmeFakeInsuree_whenInsuree_thenReturnAFemmeInsuree(self, sex_faker_mock):
         sex_faker_mock().gender.return_value = "femme"
         insuree_faker = InsureeFaker(self.a_en_locale)

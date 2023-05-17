@@ -12,7 +12,7 @@ class ContractHeaderTest(ContractTestBase):
     def setUp(self) -> None:
         self.a_protections = Protections(protections=self.a_dict_of_protections)
 
-    @patch("risk.domain.contract.Faker")
+    @patch("risc_generator.domain.contract.Faker")
     def test_givenAFRContractPreAuthorize_whenGenerateHeaderText_thenReturnProperFRText(self, faker_mock):
         # a_date
         a_year = 2022
@@ -90,7 +90,7 @@ class ContractHeaderTest(ContractTestBase):
 
         self.assertEqual(expected, actual)
 
-    @patch("risk.domain.contract.Faker")
+    @patch("risc_generator.domain.contract.Faker")
     def test_givenAFRContractBill_whenGenerateHeaderText_thenReturnProperFRText(self, faker_mock):
         # a_date
         a_year = 2022
@@ -169,7 +169,7 @@ class ContractHeaderTest(ContractTestBase):
 
         self.assertEqual(expected, actual)
 
-    @patch("risk.domain.contract.Faker")
+    @patch("risc_generator.domain.contract.Faker")
     def test_givenAENContractPreAuthorize_whenGenerateHeaderText_thenReturnProperENText(self, faker_mock):
         # a_date
         a_year = 2022
@@ -249,7 +249,7 @@ class ContractHeaderTest(ContractTestBase):
 
         self.assertEqual(expected, actual)
 
-    @patch("risk.domain.contract.Faker")
+    @patch("risc_generator.domain.contract.Faker")
     def test_givenAENContractBill_whenGenerateHeaderText_thenReturnProperENText(self, faker_mock):
         # a_date
         a_year = 2022

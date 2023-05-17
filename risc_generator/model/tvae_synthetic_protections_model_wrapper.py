@@ -1,6 +1,6 @@
 from typing import Dict
 
-from sdv.tabular import TVAE
+from sdv.single_table import TVAESynthesizer
 
 from ..model.synthetic_protections_model import SyntheticProtectionsModel
 
@@ -11,7 +11,7 @@ class TVAESyntheticProtectionsModelWrapper(SyntheticProtectionsModel):
         A Synthetic protection model using a TVAE architecture.
         See CTGAN (https://pypi.org/project/ctgan/) for more details.
         """
-        self.model = TVAE.load(model_path)
+        self.model = TVAESynthesizer.load(model_path)
 
     def sample(self, num_sample: int, **kwargs) -> Dict:
         """

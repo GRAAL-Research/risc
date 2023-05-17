@@ -13,7 +13,7 @@ class ContractTest(ContractTestBase):
     def setUp(self) -> None:
         self.a_protections = Protections(protections=self.a_dict_of_protections)
 
-    @patch("risk.domain.contract.Faker")
+    @patch("risc_generator.domain.contract.Faker")
     def test_givenAFRContractWithSomeDate_whenFormattedTextDateFrLocale_thenReturnFrDate(self, faker_mock):
         a_year = 2022
         a_month = 1
@@ -37,7 +37,7 @@ class ContractTest(ContractTestBase):
         expected = "Le 2 janvier 2022"
         self.assertEqual(expected, actual)
 
-    @patch("risk.domain.contract.Faker")
+    @patch("risc_generator.domain.contract.Faker")
     def test_givenAContractWithSomeDate_whenFormattedTextDateEnLocale_thenReturnEnDate(self, faker_mock):
         a_year = 2022
         a_month = 1

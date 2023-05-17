@@ -31,7 +31,7 @@ def get_version():
 
 
 def write_version_python_file(version):
-    version_python_file = os.path.join(current_file_path, "risc", "version.py")
+    version_python_file = os.path.join(current_file_path, "risc_generator", "version.py")
     with open(version_python_file, "w", encoding="utf-8") as f:
         f.write(f"__version__ = {repr(version)}\n")
 

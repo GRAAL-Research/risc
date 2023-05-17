@@ -50,7 +50,7 @@ class ContractDeclarationTest(ContractTestBase):
 
         self.assertEqual(expected, actual_number_of_pages)
 
-    @patch("risk.contract.Faker")
+    @patch("risc_generator.contract.Faker")
     def test_givenAFRContract_whenGeneratePremiumTicket_thenReturnProperFRText(self, date_faker_mock):
         a_year = 2022
         a_month = 2
@@ -93,7 +93,7 @@ class ContractDeclarationTest(ContractTestBase):
 
         self.assertEqual(expected, actual)
 
-    @patch("risk.contract.Faker")
+    @patch("risc_generator.contract.Faker")
     def test_givenAENContract_whenGeneratePremiumTicket_thenReturnProperENText(self, date_faker_mock):
         a_year = 2022
         a_month = 2

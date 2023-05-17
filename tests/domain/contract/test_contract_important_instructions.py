@@ -9,7 +9,7 @@ EXCLUDE = "exclude"
 
 
 class ContractImportantInstructionsTest(ContractTestBase):
-    @patch("risk.domain.contract.Faker")
+    @patch("risc_generator.domain.contract.Faker")
     def test_givenAFRContractNoEndorsements_whenGenerateImportantInstructionText_thenReturnProperFRText(
         self, faker_mock
     ):
@@ -75,7 +75,7 @@ class ContractImportantInstructionsTest(ContractTestBase):
 
         self.assertEqual(expected, actual)
 
-    @patch("risk.domain.contract.Faker")
+    @patch("risc_generator.domain.contract.Faker")
     def test_givenAFRContractFAQ41_whenGenerateImportantInstructionText_thenReturnProperFRText(self, faker_mock):
         # a_date
         a_year = 2022
@@ -145,7 +145,7 @@ class ContractImportantInstructionsTest(ContractTestBase):
 
         self.assertEqual(expected, actual)
 
-    @patch("risk.domain.contract.Faker")
+    @patch("risc_generator.domain.contract.Faker")
     def test_givenAFRContractFAQ33_whenGenerateImportantInstructionText_thenReturnProperFRText(self, faker_mock):
         # a_date
         a_year = 2022
@@ -230,7 +230,7 @@ class ContractImportantInstructionsTest(ContractTestBase):
 
         self.assertEqual(expected, actual)
 
-    @patch("risk.domain.contract.Faker")
+    @patch("risc_generator.domain.contract.Faker")
     def test_givenAFRContractFAQ5A_whenGenerateImportantInstructionText_thenReturnProperFRText(self, faker_mock):
         # a_date
         a_year = 2022
@@ -308,7 +308,7 @@ class ContractImportantInstructionsTest(ContractTestBase):
 
         self.assertEqual(expected, actual)
 
-    @patch("risk.domain.contract.Faker")
+    @patch("risc_generator.domain.contract.Faker")
     def test_givenAFRContractFAQ23A_whenGenerateImportantInstructionText_thenReturnProperFRText(self, faker_mock):
         # a_date
         a_year = 2022
@@ -386,7 +386,7 @@ class ContractImportantInstructionsTest(ContractTestBase):
 
         self.assertEqual(expected, actual)
 
-    @patch("risk.domain.contract.Faker")
+    @patch("risc_generator.domain.contract.Faker")
     def test_givenAFRContractFAQ33And23A_whenGenerateImportantInstructionText_thenReturnProperFRText(self, faker_mock):
         # a_date
         a_year = 2022
@@ -477,7 +477,7 @@ class ContractImportantInstructionsTest(ContractTestBase):
 
         self.assertEqual(expected, actual)
 
-    @patch("risk.domain.contract.Faker")
+    @patch("risc_generator.domain.contract.Faker")
     def test_givenAENContractNoEndorsements_whenGenerateImportantInstructionText_thenReturnProperENText(
         self, faker_mock
     ):
@@ -540,7 +540,7 @@ class ContractImportantInstructionsTest(ContractTestBase):
 
         self.assertEqual(expected, actual)
 
-    @patch("risk.domain.contract.Faker")
+    @patch("risc_generator.domain.contract.Faker")
     def test_givenAENContractFAQ41_whenGenerateImportantInstructionText_thenReturnProperENText(self, faker_mock):
         # a_date
         a_year = 2022
@@ -607,7 +607,7 @@ class ContractImportantInstructionsTest(ContractTestBase):
 
         self.assertEqual(expected, actual)
 
-    @patch("risk.domain.contract.Faker")
+    @patch("risc_generator.domain.contract.Faker")
     def test_givenAENContractFAQ33_whenGenerateImportantInstructionText_thenReturnProperENText(self, faker_mock):
         # a_date
         a_year = 2022
@@ -689,7 +689,7 @@ class ContractImportantInstructionsTest(ContractTestBase):
 
         self.assertEqual(expected, actual)
 
-    @patch("risk.domain.contract.Faker")
+    @patch("risc_generator.domain.contract.Faker")
     def test_givenAENContractFAQ5A_whenGenerateImportantInstructionText_thenReturnProperENText(self, faker_mock):
         # a_date
         a_year = 2022
@@ -764,7 +764,7 @@ class ContractImportantInstructionsTest(ContractTestBase):
 
         self.assertEqual(expected, actual)
 
-    @patch("risk.domain.contract.Faker")
+    @patch("risc_generator.domain.contract.Faker")
     def test_givenAENContractFAQ23A_whenGenerateImportantInstructionText_thenReturnProperENText(self, faker_mock):
         # a_date
         a_year = 2022
