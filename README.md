@@ -86,7 +86,7 @@ pip install -U git+https://github.com/GRAAL-Research/risc.git@dev
 
 ## Cite
 
-Use the following for the article;
+Use the following for the article or dataset;
 
 ```
 @misc{beaucheminrisc,
