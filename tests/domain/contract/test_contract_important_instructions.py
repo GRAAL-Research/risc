@@ -1,3 +1,5 @@
+# pylint: disable=too-many-locals
+
 import datetime
 from unittest.mock import patch
 

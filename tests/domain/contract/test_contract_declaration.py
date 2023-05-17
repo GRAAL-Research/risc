@@ -74,21 +74,21 @@ class ContractDeclarationTest(ContractTestBase):
             contract_starting_date=fpq1_contract.formatted_text_date(), premium=self.a_premium
         )
         expected = (
-            f"Fait par l'Assureur à Québec le 1 février 2022\n"
-            f"Sherlock Holmes\n"
-            f"Président et chef de la direction\n"
-            f"Ceci n'est pas une facture, veuillez vous référer aux documents de la facturation pour "
-            f"les montants à payer ou à recevoir\n"
-            f"PRIME DU VÉHICULE 1\n"
-            f"Catégorie d'assurance :\n"
-            f"AUTOMOBILE\n"
-            f"PRIME ANNUELLE\n"
-            f"7$ (excluant taxe)\n"
-            f"VOTRE NOUVELLE POLICE 12 MOIS\n"
-            f"MONTANT\n"
-            f"7$ (excluant taxe)\n"
-            f"TAXE\n"
-            f"0.63$\n"
+            "Fait par l'Assureur à Québec le 1 février 2022\n"
+            "Sherlock Holmes\n"
+            "Président et chef de la direction\n"
+            "Ceci n'est pas une facture, veuillez vous référer aux documents de la facturation pour "
+            "les montants à payer ou à recevoir\n"
+            "PRIME DU VÉHICULE 1\n"
+            "Catégorie d'assurance :\n"
+            "AUTOMOBILE\n"
+            "PRIME ANNUELLE\n"
+            "7$ (excluant taxe)\n"
+            "VOTRE NOUVELLE POLICE 12 MOIS\n"
+            "MONTANT\n"
+            "7$ (excluant taxe)\n"
+            "TAXE\n"
+            "0.63$\n"
         )
 
         self.assertEqual(expected, actual)
@@ -117,21 +117,21 @@ class ContractDeclarationTest(ContractTestBase):
             contract_starting_date=fpq1_contract.formatted_text_date(), premium=self.a_premium
         )
         expected = (
-            f"Prepared by the Insurer in Quebec City on February 1, 2022\n"
-            f"Sherlock Holmes\n"
-            f"President and chief executive officer\n"
-            f"This is not an invoice. Please refer to the billing documents"
-            f"for information on the amounts payable or receivable\n"
-            f"PREMIUM VEHICLE 1\n"
-            f"Class of insurance:\n"
-            f"AUTOMOBILE\n"
-            f"ANNUAL PREMIUM\n"
-            f"7$ (excluding tax)\n"
-            f"YOUR NEW 12-MONTH POLICY\n"
-            f"MONTANT\n"
-            f"7$ (excluding tax)\n"
-            f"TAX\n"
-            f"0.63$\n"
+            "Prepared by the Insurer in Quebec City on February 1, 2022\n"
+            "Sherlock Holmes\n"
+            "President and chief executive officer\n"
+            "This is not an invoice. Please refer to the billing documents"
+            "for information on the amounts payable or receivable\n"
+            "PREMIUM VEHICLE 1\n"
+            "Class of insurance:\n"
+            "AUTOMOBILE\n"
+            "ANNUAL PREMIUM\n"
+            "7$ (excluding tax)\n"
+            "YOUR NEW 12-MONTH POLICY\n"
+            "MONTANT\n"
+            "7$ (excluding tax)\n"
+            "TAX\n"
+            "0.63$\n"
         )
 
         self.assertEqual(expected, actual)

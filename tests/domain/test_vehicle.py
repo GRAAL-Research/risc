@@ -1,3 +1,5 @@
+# pylint: disable=unnecessary-dunder-call
+
 from unittest import TestCase
 
 from risc_generator import Vehicle

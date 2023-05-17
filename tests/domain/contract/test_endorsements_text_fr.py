@@ -1,3 +1,6 @@
+# pylint: disable=too-many-public-methods
+
+
 from risc_generator import FPQ1Contract
 from risc_generator.content.fr.endorsements.endorsement_header import generate_endorsement_page_header_text
 from tests.domain.contract.contract_base import ContractTestBase
