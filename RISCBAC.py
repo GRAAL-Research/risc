@@ -44,7 +44,7 @@ _HOMEPAGE = "https://huggingface.co/datasets/davebulaval/RISCBAC"
 
 _LICENSE = "Attribution 4.0 International (CC BY 4.0)"
 
-_URL = "https://huggingface.co/datasets/davebulaval/RISCBAC/blob/main/riscbac.zip"
+_URL = "https://graal.ift.ulaval.ca/public/deepparse/riscbac.zip"
 
 
 class RISCBAC(datasets.GeneratorBasedBuilder):
