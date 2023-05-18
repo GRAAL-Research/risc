@@ -48,8 +48,8 @@ _HOMEPAGE = "https://huggingface.co/datasets/davebulaval/RISCBAC"
 _LICENSE = "Attribution 4.0 International (CC BY 4.0)"
 
 _URLS = {
-    "en": "https://huggingface.co/datasets/davebulaval/RISCBAC/blob/main/en.zip",
-    "fr": "https://huggingface.co/datasets/davebulaval/RISCBAC/blob/main/fr.zip",
+    "en": "https://huggingface.co/datasets/davebulaval/RISCBAC/blob/main/en.jsonl",
+    "fr": "https://huggingface.co/datasets/davebulaval/RISCBAC/blob/main/fr.jsonl",
 }
 
 
@@ -66,6 +66,8 @@ class RISCBAC(datasets.GeneratorBasedBuilder):
             name="fr", version=VERSION, description="This part of the dataset are automobile contract in French."
         ),
     ]
+
+    DEFAULT_CONFIG_NAME = "fr"
 
     def _info(self):
         features = datasets.Features(
