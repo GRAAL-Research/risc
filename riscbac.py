@@ -76,6 +76,7 @@ class RISCBAC(datasets.GeneratorBasedBuilder):
         return datasets.DatasetInfo(
             description=_DESCRIPTION,
             features=features,
+            supervised_keys=None,
             homepage=_HOMEPAGE,
             license=_LICENSE,
             citation=_CITATION,
@@ -87,27 +88,26 @@ class RISCBAC(datasets.GeneratorBasedBuilder):
         if self.config.name == "en":
             return [
                 datasets.SplitGenerator(
-                    name=datasets.Split.TRAIN,
+                    name="full_en",
                     gen_kwargs={
-                        "files_dir_path": os.path.join(data_dir, "en"),
-                        "split": "full",
+                        "filepath": os.path.join(data_dir, "en", "en.jsonl"),
                     },
                 )
             ]
-        else:
+        elif self.config.name == "fr":
             return [
                 datasets.SplitGenerator(
-                    name=datasets.Split.TRAIN,
+                    name="full_fr",
                     gen_kwargs={
-                        "files_dir_path": os.path.join(data_dir, "fr"),
-                        "split": "full",
+                        "filepath": os.path.join(data_dir, "fr", "fr.jsonl"),
                     },
                 ),
             ]
+        else:
+            raise ValueError(f"The config name {self.config.name} is not supported. Please use " "'en' or 'fr'.")
 
-    def _generate_examples(self, files_dir_path, split):
-        files = os.listdir(files_dir_path)
-        for key, file in enumerate(files):
-            with open(os.path.join(files_dir_path, file), "r", encoding="utf-8") as f:
-                text = ["".join(f.readlines()).strip()]
-                yield key, {"text": text}
+    def _generate_examples(self, filepath):
+        with open(filepath, "r", encoding="utf-8") as f:
+            for key, line in enumerate(f):
+                d = json.loads(line)
+                yield key, {"text": d}
