@@ -92,7 +92,7 @@ class RISCBAC(datasets.GeneratorBasedBuilder):
                 datasets.SplitGenerator(
                     name="full_en",
                     gen_kwargs={
-                        "filepath": os.path.join(data_dir, "en", "en.jsonl"),
+                        "filepath": os.path.join(data_dir, "en.jsonl"),
                     },
                 )
             ]
@@ -101,7 +101,7 @@ class RISCBAC(datasets.GeneratorBasedBuilder):
                 datasets.SplitGenerator(
                     name="full_fr",
                     gen_kwargs={
-                        "filepath": os.path.join(data_dir, "fr", "fr.jsonl"),
+                        "filepath": os.path.join(data_dir, "fr.jsonl"),
                     },
                 ),
             ]
