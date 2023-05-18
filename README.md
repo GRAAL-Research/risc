@@ -1,9 +1,9 @@
 <div align="center">
 
-[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/risc_generator)](https://pypi.org/project/RISCgen)
-[![PyPI Status](https://badge.fury.io/py/risc_generator.svg)](https://badge.fury.io/py/risc)
-[![PyPI Status](https://pepy.tech/badge/risc_generator)](https://pepy.tech/project/risc)
-[![Downloads](https://pepy.tech/badge/risc_generator/month)](https://pepy.tech/project/risc)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/risc_generator)](https://pypi.org/project/risc_generator)
+[![PyPI Status](https://badge.fury.io/py/risc_generator.svg)](https://badge.fury.io/py/risc_generator)
+[![PyPI Status](https://pepy.tech/badge/risc_generator)](https://pepy.tech/project/risc_generator)
+[![Downloads](https://pepy.tech/badge/risc_generator/month)](https://pepy.tech/project/risc_generator)
 
 [![Formatting](https://github.com/GRAAL-Research/risc/actions/workflows/formatting.yml/badge.svg?branch=stable)](https://github.com/GRAAL-Research/risc/actions/workflows/formatting.yml)
 [![Linting](https://github.com/GRAAL-Research/risc/actions/workflows/linting.yml/badge.svg?branch=stable)](https://github.com/GRAAL-Research/risc/actions/workflows/linting.yml)
