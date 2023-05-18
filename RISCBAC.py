@@ -13,13 +13,10 @@
 # limitations under the License.
 """RISCBAC: a synthetic bilingual automotive insurance contract dataset"""
 
-
-import csv
 import json
 import os
 
 import datasets
-
 
 _CITATION = """\
 @misc{beaucheminrisc,
@@ -47,10 +44,7 @@ _HOMEPAGE = "https://huggingface.co/datasets/davebulaval/RISCBAC"
 
 _LICENSE = "Attribution 4.0 International (CC BY 4.0)"
 
-_URLS = {
-    "en": "https://huggingface.co/datasets/davebulaval/RISCBAC/blob/main/en.jsonl",
-    "fr": "https://huggingface.co/datasets/davebulaval/RISCBAC/blob/main/fr.jsonl",
-}
+_URL = "https://huggingface.co/datasets/davebulaval/RISCBAC/blob/main/riscbac.zip"
 
 
 class RISCBAC(datasets.GeneratorBasedBuilder):
@@ -85,24 +79,19 @@ class RISCBAC(datasets.GeneratorBasedBuilder):
         )
 
     def _split_generators(self, dl_manager):
-        urls = _URLS[self.config.name]
-        data_dir = dl_manager.download_and_extract(urls)
+        data_dir = dl_manager.download_and_extract(_URL)
         if self.config.name == "en":
             return [
                 datasets.SplitGenerator(
                     name="full_en",
-                    gen_kwargs={
-                        "filepath": os.path.join(data_dir, "en.jsonl"),
-                    },
+                    gen_kwargs={"filepath": os.path.join(data_dir, "en.jsonl")},
                 )
             ]
         elif self.config.name == "fr":
             return [
                 datasets.SplitGenerator(
                     name="full_fr",
-                    gen_kwargs={
-                        "filepath": os.path.join(data_dir, "fr.jsonl"),
-                    },
+                    gen_kwargs={"filepath": os.path.join(data_dir, "fr.jsonl")},
                 ),
             ]
         else:
@@ -112,4 +101,4 @@ class RISCBAC(datasets.GeneratorBasedBuilder):
         with open(filepath, "r", encoding="utf-8") as f:
             for key, line in enumerate(f):
                 d = json.loads(line)
-                yield key, {"text": d}
+                yield key, d
