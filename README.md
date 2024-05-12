@@ -89,13 +89,15 @@ pip install -U git+https://github.com/GRAAL-Research/risc.git@dev
 Use the following for the article or dataset;
 
 ```
-@misc{beaucheminrisc,
-    title={{RISC: Generating Realistic Synthetic Bilingual Insurance
-Contract}},
-    author={David Beauchemin and Richard Khoury},
-    year={2023},
-    eprint={2304.04212},
-    archivePrefix={arXiv}
+
+@article{Beauchemin2023RISC,
+	author = {Beauchemin, David and Khoury, Richard},
+	journal = {Proceedings of the Canadian Conference on Artificial Intelligence},
+	year = {2023},
+	month = {jun 5},
+	note = {https://caiac.pubpub.org/pub/k18zu6c9},
+	publisher = {Canadian Artificial Intelligence Association (CAIAC)},
+	title = {RISC: Generating {Realistic} {Synthetic} {Bilingual} {Insurance} {Contract}},
 }
 ```
 
