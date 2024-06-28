@@ -309,6 +309,7 @@ def generate_item_4_text(protections: Protections, premium: Premium) -> str:
 
     # We construct the text to use using template filling.
     for protection_name in all_property_damage_protection:
+
         # To extract the proper property damage text, we use the protection damage name written in CamelCase
         # and convert it into snake_case.
         snake_case_protection_name = change_to_snake_case(protection_name)

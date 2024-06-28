@@ -954,6 +954,7 @@ def generate_loss_and_claims_reporting_text() -> str:
         f"{NEW_PAGE_TAG}\n"
         f"{fpq1_pages_header_text}"
         "\t n'a pas respecté le contrat d'assurance.\n"
+        "4. ARBITRAGE EN CAS DE DÉSACCORD ENTRE L'ASSURÉ DÉSIGNÉ ET L'ASSUREUR 26\n"
         "4.1 Faire une demande d'arbitrage\n"
         "L'assuré désigné ou l'assureur peuvent faire une demande d'arbitrage s'ils ne sont pas d'accord "
         "sur les questions suivantes :\n"

@@ -33,6 +33,7 @@ Modification are:
  - removal of machine
  - removal of Category
 """
+
 from random import choice
 
 from faker.providers import BaseProvider
