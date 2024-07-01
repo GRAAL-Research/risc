@@ -6,4 +6,6 @@ The initial functionalities of simulation for automobile insurance contracts for
 
 # 0.0.3
 - Fix model filename and loading path.
+- Release of new V2 model and delete of V1 model.
+
 
