@@ -24,7 +24,7 @@ class TVAEFPQ1ContractFaker(FPQ1ContractFaker):
         """
         if tvae_synthetic_data_faker_model_path is None:
             tvae_synthetic_data_faker_model_path = (
-                os.path.join(os.path.dirname(__file__), '../../resources', "tvae_model_q1_2023.pkl"),
+                os.path.join(os.path.dirname(__file__), '../../resources', "tvae_model_v1.pkl"),
             )
         protection_faker = ProtectionsFaker(
             model=TVAESyntheticProtectionsModelWrapper(tvae_synthetic_data_faker_model_path)
