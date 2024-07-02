@@ -50,7 +50,7 @@ _URL = "https://graal.ift.ulaval.ca/public/deepparse/riscbac.zip"
 class RISCBAC(datasets.GeneratorBasedBuilder):
     """RISCBAC: a synthetic bilingual automotive insurance contract dataset"""
 
-    VERSION = datasets.Version("1.0.0")
+    VERSION = datasets.Version("1.0.1")
 
     BUILDER_CONFIGS = [
         datasets.BuilderConfig(
