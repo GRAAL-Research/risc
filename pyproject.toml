@@ -37,7 +37,7 @@ dependencies = [
     "scipy>=1.11",
     # The pre-trained TVAE model was fitted with SDV 1.14.0. SDV 2.0 removed ``TVAESynthesizer.load`` and changed
     # the ``sample`` return type, so we stay on the 1.x line.
-    "sdv>=1.14.0,<2",
+    "sdv>=1.14.0,<3",
     "torch>=2.1",
     "tqdm>=4.65",
 ]
