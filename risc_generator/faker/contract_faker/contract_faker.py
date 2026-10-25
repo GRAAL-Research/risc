@@ -65,7 +65,7 @@ class FPQ1ContractFaker:
         premium: Premium = self.premium_faker.premium(protections=protections, insuree=insuree)
 
         include_faq_43: bool = protections.is_protected("FAQ43Coverage")
-        include_faq_5a: bool = protections.is_protected("FAQ5aCoverage")
+        include_faq_5a: bool = protections.is_protected("FAQ5ACoverage")
 
         vehicle: Vehicle = self.vehicle_faker.vehicle(
             faq_43=include_faq_43, faq_5a=include_faq_5a, contract_year=contract_year

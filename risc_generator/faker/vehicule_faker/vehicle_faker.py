@@ -25,7 +25,8 @@ class QuebecVehicleFaker(Faker):
         Method to fake a vehicle.
 
         faq_43 (bool): Either or not the car need to respect FAQ43 endorsement.
-        contract_year (bool): Year of the contract.
+        faq_5a (bool): Either or not the car is rented (FAQ5A endorsement), in which case it is new.
+        contract_year (int): Year of the contract.
 
         Return:
             A faked Vehicle.
