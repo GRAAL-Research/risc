@@ -5,7 +5,9 @@
 [![PyPI Status](https://pepy.tech/badge/risc_generator)](https://pepy.tech/project/risc_generator)
 [![Downloads](https://pepy.tech/badge/risc_generator/month)](https://pepy.tech/project/risc_generator)
 
-[![Tests](https://github.com/GRAAL-Research/risc/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/GRAAL-Research/risc/actions/workflows/tests.yml)
+[![CI](https://img.shields.io/github/actions/workflow/status/GRAAL-Research/risc/tests.yml?branch=main&logo=github&label=CI)](https://github.com/GRAAL-Research/risc/actions/workflows/tests.yml)
+[![Documentation](https://img.shields.io/github/actions/workflow/status/GRAAL-Research/risc/docs.yml?branch=main&logo=github&label=Documentation)](https://github.com/GRAAL-Research/risc/actions/workflows/docs.yml)
+[![CodeQL](https://img.shields.io/github/actions/workflow/status/GRAAL-Research/risc/codeql-analysis.yml?branch=main&logo=github&label=CodeQL)](https://github.com/GRAAL-Research/risc/actions/workflows/codeql-analysis.yml)
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/62464699ff0740d0b8064227c4274b98)](https://www.codacy.com/gh/GRAAL-Research/risc/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=GRAAL-Research/risc&amp;utm_campaign=Badge_Grade)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
