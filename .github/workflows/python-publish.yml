@@ -1,13 +1,19 @@
-# Build and publish the package to PyPI when a release is created.
+# Build and publish the package to PyPI when a release is published, with PyPI trusted publishing (OIDC): no secret.
+# PyPI configuration: project risc_generator > Publishing > GitHub, owner GRAAL-Research, repository risc,
+# workflow python-publish.yml, environment pypi.
 name: Upload Python Package
 
 on:
   release:
-    types: [ created ]
+    types: [ published ]
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
     steps:
       - uses: actions/checkout@v7
       - uses: astral-sh/setup-uv@v7
@@ -16,7 +22,4 @@ jobs:
       - name: Build
         run: uv build
       - name: Publish
-        env:
-          TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-          TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
-        run: uvx twine upload dist/*
+        uses: pypa/gh-action-pypi-publish@release/v1
