@@ -278,3 +278,36 @@ class ContractTest(ContractTestBase):
         expected = None
 
         self.assertEqual(expected, actual)
+
+
+class ContractLanguageIsolationTest(ContractTestBase):
+    def _contract(self, locale: str) -> FPQ1Contract:
+        return FPQ1Contract(
+            client_number=self.a_client_number,
+            contract_start_date=self.a_contract_start_date,
+            insuree=self.a_insuree,
+            vehicle=self.a_vehicle,
+            payment_method=self.a_pre_authorize_payment_method,
+            protections=Protections(protections=self.a_dict_of_protections),
+            premium=self.a_premium,
+            financing=self.a_creditor,
+            locale=locale,
+        )
+
+    def test_givenAnEnContractThenAFrContract_whenGenerateEnText_thenEnTextIsStillInEnglish(self):
+        en_contract = self._contract(self.a_en_locale)
+        expected = en_contract.generate_contract_text()
+
+        self._contract(self.a_fr_locale)
+
+        actual = en_contract.generate_contract_text()
+        self.assertEqual(expected, actual)
+        self.assertIn("QUEBEC AUTOMOBILE INSURANCE POLICY", actual)
+
+    def test_givenAFrContractThenAnEnContract_whenGenerateFrEndorsementText_thenFrTextIsStillInFrench(self):
+        fr_contract = self._contract(self.a_fr_locale)
+        expected = fr_contract.generate_endorsements_text()
+
+        self._contract(self.a_en_locale)
+
+        self.assertEqual(expected, fr_contract.generate_endorsements_text())

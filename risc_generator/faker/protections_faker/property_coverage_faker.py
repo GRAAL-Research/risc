@@ -1,5 +1,3 @@
-from typing import Dict
-
 from ...faker.protections_faker.protections_amount_faker import (
     b1_deductible_faker,
     b2_deductible_faker,
@@ -16,7 +14,7 @@ def property_coverage_faker(
     include_b2_coverage: bool,
     include_b3_coverage: bool,
     include_b4_coverage: bool,
-) -> Dict:
+) -> dict:
     """
     Property coverage faker function of the deductible amount protection and logical of what is included and excluded
     base on the property coverage.

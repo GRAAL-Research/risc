@@ -13,7 +13,7 @@ We use GitHub to host code, to track issues and feature requests, as well as acc
 ## We Use [GitHub Flow](https://guides.github.com/introduction/flow/index.html), So All Code Changes Happen Through Pull Requests
 Pull requests are the best way to propose changes to the codebase. We actively welcome your pull requests:
 
-1. Fork the repo and create your branch from the **`dev` branch**.
+1. Fork the repo and create your branch from the **`main` branch**.
 2. If you've added code that should be tested, you **must** ensure it is properly tested.
 3. If you've changed APIs, update the in-code documentation.
 4. Ensure the CI/CD test suite passes.
@@ -60,35 +60,26 @@ When creating your enhancement request, please:
 
 ## Prerequisites
 
-We created three requirements files to install all the tools used for the development of the library. `tests/requirements.txt` define the requirements for the tests.
-
-You can install all the requirements with
+RISC supports Python 3.11 and later. Install the package in editable mode with its development tools
+(pytest, pytest-cov and Ruff). We use [uv](https://docs.astral.sh/uv/), but `pip` works as well.
 
 ``` shell
-pip install -r tests/requirements.txt
-pip install -r styling_requirements.txt
+uv venv
+uv pip install -e ".[dev]"
+# or, with pip
+pip install -e ".[dev]"
 ```
 
-Also, you should run `python setup.py develop` to build the project.
-``` shell
-python setup.py develop
-```
+If you do not have a GPU, add `--torch-backend cpu` to the `uv pip install` command to install the CPU build of PyTorch.
 
 ## Use a Consistent Coding Style
 
-All of the code is formatted using [black](https://black.readthedocs.io) with the associated [config file](https://github.com/GRAAL-Research/risc/blob/main/pyproject.toml). In order to format the code of your submission, simply run
-> See the [styling requirements](https://github.com/GRAAL-Research/risc/blob/main/styling_requirements.txt) for the proper black version to use.
+The code is formatted and linted with [Ruff](https://docs.astral.sh/ruff/), configured in
+[`pyproject.toml`](https://github.com/GRAAL-Research/risc/blob/main/pyproject.toml). Before submitting, run
 
 ``` shell
-black .
-```
-
-We also have our own `pylint` [config file](https://github.com/GRAAL-Research/risc/blob/main/.pylintrc). Try not to introduce code incoherences detected by the linting. You can run the linting procedure with
-> See the [styling requirements](https://github.com/GRAAL-Research/risc/blob/main/styling_requirements.txt) for the proper pylint version to use.
-
-``` shell
-pylint risc
-pylint tests
+ruff format .
+ruff check .
 ```
 
 ## Tests
@@ -99,21 +90,16 @@ For any pull request submitted, **ALL** of the tests must succeed. You can run t
 
 ``` shell
 pytest
-
-# or with multiple CPU
-
-pytest -n 4
 ```
 
-> The integration tests need to be executed on a device with a GPU.
-
-We also provide a script, `run_tests_python_envs.sh`, to run all the tests in all the supported versions. To do so, you need to install Conda and run
-the following command
+The tests marked `model` load the pre-trained TVAE model and generate complete contracts. They take a few more
+seconds; you can skip them during development with
 
 ``` shell
-bash -l run_tests_python_envs.sh # For bash terminal
-zsh -i run_tests_python_envs.sh # For ZSH terminal
+pytest -m "not model"
 ```
+
+The CI runs the full test suite on every supported Python version (3.11 to 3.14).
 
 ## Documentation
 

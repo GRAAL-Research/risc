@@ -13,12 +13,12 @@ from ...faker.protections_faker.tools.endorsement_coverage_parsing import (
     endorsement_coverage_parsing,
 )
 from ...faker.protections_faker.tools.protections_faker_validation_tools import (
-    is_valid_protections,
-    is_only_liability_coverage,
     include_b1_coverage,
     include_b2_coverage,
     include_b3_coverage,
     include_b4_coverage,
+    is_only_liability_coverage,
+    is_valid_protections,
 )
 from ...model.synthetic_protections_model import SyntheticProtectionsModel
 

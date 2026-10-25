@@ -1,29 +1,72 @@
+import inspect
 import re
-from datetime import datetime, timedelta
-from typing import Union
+from datetime import date, timedelta
+from types import MethodType
 
 from babel.dates import format_date
 from dateutil.relativedelta import relativedelta
 from faker import Faker
 
-from .premium import Premium
-from ..content import fr, en
+from ..content import en, fr
 from ..domain.insuree import Insuree
 from ..domain.protections import Protections
 from ..domain.vehicle import Vehicle
+from .premium import Premium
+
+_SECTION_GENERATORS = (
+    "generate_header_text",
+    "generate_important_instructions_text",
+    "generate_declaration_text",
+    "generate_cancellation_of_policy_text",
+    "generate_certificates_text",
+    "generate_bill_text",
+    "generate_client_advantages_text",
+    "generate_fpq1_text",
+)
+
+_ENDORSEMENT_GENERATORS = tuple(
+    f"generate_faq{faq}_endorsement_text"
+    for faq in (
+        "2",
+        "3",
+        "5a",
+        "8",
+        "9",
+        "13",
+        "16",
+        "19",
+        "20",
+        "20a",
+        "23a",
+        "25",
+        "27",
+        "27a",
+        "28",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "34ab",
+        "37ab",
+        "40",
+        "41",
+        "43",
+    )
+)
 
 
 class FPQ1Contract:
     def __init__(
         self,
         client_number: str,
-        contract_start_date: datetime.date,
+        contract_start_date: date,
         insuree: Insuree,
         vehicle: Vehicle,
         payment_method: str,
         protections: Protections,
         premium: Premium,
-        financing: Union[None, str],
+        financing: None | str,
         locale: str,
     ):
         """
@@ -39,7 +82,6 @@ class FPQ1Contract:
         premium (Premium): A premium base on the protections and the insuree of the contract.
         locale (str): The locale language setting to use for simulation. Can either be `'fr_CA'` or `'en_CA'`.
         """
-        super().__init__()
         self.locale = locale
         if self.locale == "fr_CA":
             self.ownership_rental = "Location"
@@ -79,9 +121,7 @@ class FPQ1Contract:
         self.policy = "001"  # We set it to 1 since we assume (for now) only new clients
         self.policy_number = f"{self.client_number}-{self.policy}"
 
-        self._dynamic_import_text_generation_method()
-
-        self._dynamic_import_method_endorsement_text_generation()
+        self._bind_language_text_generators()
 
     def formatted_text_date(self) -> str:
         """
@@ -110,7 +150,7 @@ class FPQ1Contract:
             car_ownership = self.ownership_purchase
         return car_ownership
 
-    def car_with_financing(self) -> Union[None, str]:
+    def car_with_financing(self) -> None | str:
         """
         Method to evaluate if the car is financed with a creditor (e.g. protections include a FAQ23a coverage)
         or a lessor (e.g. protections include a FAQ5a coverage).
@@ -131,152 +171,22 @@ class FPQ1Contract:
 
     __repr__ = __str__
 
-    def _dynamic_import_text_generation_method(self) -> None:
-        # pylint: disable=too-many-branches
+    def _bind_language_text_generators(self) -> None:
         """
-        Method to dynamically handle the selection of the proper function to generate text in a specific language.
+        Bind the text generation functions of the contract language to this instance.
+
+        The generators are bound on the instance (not on the class) so that contracts in different languages can
+        coexist: creating a French contract must not change the text of an English contract created before.
         """
-
-        # Add header_template method
-        if "fr" in self.locale:
-            header_import = fr.header.generate_header_text
-        else:
-            header_import = en.header.generate_header_text
-        setattr(FPQ1Contract, "generate_header_text", header_import)
-
-        # Add important instructions method
-        if "fr" in self.locale:
-            important_instructions_import = fr.important_instructions.generate_important_instructions_text
-        else:
-            important_instructions_import = en.important_instructions.generate_important_instructions_text
-        setattr(FPQ1Contract, "generate_important_instructions_text", important_instructions_import)
-
-        # Add declaration method
-        if "fr" in self.locale:
-            declaration_import = fr.declaration.generate_declaration_text
-        else:
-            declaration_import = en.declaration.generate_declaration_text
-        setattr(FPQ1Contract, "generate_declaration_text", declaration_import)
-
-        # Add cancellation of policy method
-        if "fr" in self.locale:
-            cancellation_of_policy_import = fr.cancellation_of_policy.generate_cancellation_of_policy_text
-        else:
-            cancellation_of_policy_import = en.cancellation_of_policy.generate_cancellation_of_policy_text
-        setattr(FPQ1Contract, "generate_cancellation_of_policy_text", cancellation_of_policy_import)
-
-        # Add certificates method
-        if "fr" in self.locale:
-            certificates_import = fr.certificates.generate_certificates_text
-        else:
-            certificates_import = en.certificates.generate_certificates_text
-        setattr(FPQ1Contract, "generate_certificates_text", certificates_import)
-
-        # Add bill method
-        if "fr" in self.locale:
-            bill_import = fr.bill.generate_bill_text
-        else:
-            bill_import = en.bill.generate_bill_text
-        setattr(FPQ1Contract, "generate_bill_text", bill_import)
-
-        # Add client advantages method
-        if "fr" in self.locale:
-            client_advantages_import = fr.client_advantages.generate_client_advantages_text
-        else:
-            client_advantages_import = en.client_advantages.generate_client_advantages_text
-        setattr(FPQ1Contract, "generate_client_advantages_text", client_advantages_import)
-
-        # Add FPQ1 method
-        if "fr" in self.locale:
-            fpq1_method = fr.fpq_1.generate_fpq1_text
-        else:
-            fpq1_method = en.fpq_1.generate_fpq1_text
-        setattr(FPQ1Contract, "generate_fpq1_text", fpq1_method)
-
-    def _dynamic_import_method_endorsement_text_generation(self) -> None:
-        # pylint: disable=too-many-locals, too-many-statements
-        """
-        Dynamically import all the method for the endorsement text generation
-        """
-        if "fr" in self.locale:
-            faq_2_import = fr.endorsements.generate_faq2_endorsement_text
-            faq_3_import = fr.endorsements.generate_faq3_endorsement_text
-            faq_5a_import = fr.endorsements.generate_faq5a_endorsement_text
-            faq_8_import = fr.endorsements.generate_faq8_endorsement_text
-            faq_9_import = fr.endorsements.generate_faq9_endorsement_text
-            faq_13_import = fr.endorsements.generate_faq13_endorsement_text
-            faq_16_import = fr.endorsements.generate_faq16_endorsement_text
-            faq_19_import = fr.endorsements.generate_faq19_endorsement_text
-            faq_20_import = fr.endorsements.generate_faq20_endorsement_text
-            faq_20a_import = fr.endorsements.generate_faq20a_endorsement_text
-            faq_23a_import = fr.endorsements.generate_faq23a_endorsement_text
-            faq_25_import = fr.endorsements.generate_faq25_endorsement_text
-            faq_27_import = fr.endorsements.generate_faq27_endorsement_text
-            faq_27a_import = fr.endorsements.generate_faq27a_endorsement_text
-            faq_28_import = fr.endorsements.generate_faq28_endorsement_text
-            faq_30_import = fr.endorsements.generate_faq30_endorsement_text
-            faq_31_import = fr.endorsements.generate_faq31_endorsement_text
-            faq_32_import = fr.endorsements.generate_faq32_endorsement_text
-            faq_33_import = fr.endorsements.generate_faq33_endorsement_text
-            faq_34_import = fr.endorsements.generate_faq34_endorsement_text
-            faq_34ab_import = fr.endorsements.generate_faq34ab_endorsement_text
-            faq_37ab_import = fr.endorsements.generate_faq37ab_endorsement_text
-            faq_40_import = fr.endorsements.generate_faq40_endorsement_text
-            faq_41_import = fr.endorsements.generate_faq41_endorsement_text
-            faq_43_import = fr.endorsements.generate_faq43_endorsement_text
-        else:
-            faq_2_import = en.endorsements.generate_faq2_endorsement_text
-            faq_3_import = en.endorsements.generate_faq3_endorsement_text
-            faq_5a_import = en.endorsements.generate_faq5a_endorsement_text
-            faq_8_import = en.endorsements.generate_faq8_endorsement_text
-            faq_9_import = en.endorsements.generate_faq9_endorsement_text
-            faq_13_import = en.endorsements.generate_faq13_endorsement_text
-            faq_16_import = en.endorsements.generate_faq16_endorsement_text
-            faq_19_import = en.endorsements.generate_faq19_endorsement_text
-            faq_20_import = en.endorsements.generate_faq20_endorsement_text
-            faq_20a_import = en.endorsements.generate_faq20a_endorsement_text
-            faq_23a_import = en.endorsements.generate_faq23a_endorsement_text
-            faq_25_import = en.endorsements.generate_faq25_endorsement_text
-            faq_27_import = en.endorsements.generate_faq27_endorsement_text
-            faq_27a_import = en.endorsements.generate_faq27a_endorsement_text
-            faq_28_import = en.endorsements.generate_faq28_endorsement_text
-            faq_30_import = en.endorsements.generate_faq30_endorsement_text
-            faq_31_import = en.endorsements.generate_faq31_endorsement_text
-            faq_32_import = en.endorsements.generate_faq32_endorsement_text
-            faq_33_import = en.endorsements.generate_faq33_endorsement_text
-            faq_34_import = en.endorsements.generate_faq34_endorsement_text
-            faq_34ab_import = en.endorsements.generate_faq34ab_endorsement_text
-            faq_37ab_import = en.endorsements.generate_faq37ab_endorsement_text
-            faq_40_import = en.endorsements.generate_faq40_endorsement_text
-            faq_41_import = en.endorsements.generate_faq41_endorsement_text
-            faq_43_import = en.endorsements.generate_faq43_endorsement_text
-
-        setattr(FPQ1Contract, "generate_faq2_endorsement_text", faq_2_import)
-        setattr(FPQ1Contract, "generate_faq3_endorsement_text", faq_3_import)
-        setattr(FPQ1Contract, "generate_faq5a_endorsement_text", faq_5a_import)
-        setattr(FPQ1Contract, "generate_faq8_endorsement_text", faq_8_import)
-        setattr(FPQ1Contract, "generate_faq9_endorsement_text", faq_9_import)
-        setattr(FPQ1Contract, "generate_faq13_endorsement_text", faq_13_import)
-        setattr(FPQ1Contract, "generate_faq16_endorsement_text", faq_16_import)
-        setattr(FPQ1Contract, "generate_faq19_endorsement_text", faq_19_import)
-        setattr(FPQ1Contract, "generate_faq20_endorsement_text", faq_20_import)
-        setattr(FPQ1Contract, "generate_faq20a_endorsement_text", faq_20a_import)
-        setattr(FPQ1Contract, "generate_faq23a_endorsement_text", faq_23a_import)
-        setattr(FPQ1Contract, "generate_faq25_endorsement_text", faq_25_import)
-        setattr(FPQ1Contract, "generate_faq27_endorsement_text", faq_27_import)
-        setattr(FPQ1Contract, "generate_faq27a_endorsement_text", faq_27a_import)
-        setattr(FPQ1Contract, "generate_faq28_endorsement_text", faq_28_import)
-        setattr(FPQ1Contract, "generate_faq30_endorsement_text", faq_30_import)
-        setattr(FPQ1Contract, "generate_faq31_endorsement_text", faq_31_import)
-        setattr(FPQ1Contract, "generate_faq32_endorsement_text", faq_32_import)
-        setattr(FPQ1Contract, "generate_faq33_endorsement_text", faq_33_import)
-        setattr(FPQ1Contract, "generate_faq34_endorsement_text", faq_34_import)
-        setattr(FPQ1Contract, "generate_faq34ab_endorsement_text", faq_34ab_import)
-        setattr(FPQ1Contract, "generate_faq37a_endorsement_text", faq_37ab_import)  # Same as 37 AB
-        setattr(FPQ1Contract, "generate_faq37ab_endorsement_text", faq_37ab_import)
-        setattr(FPQ1Contract, "generate_faq40_endorsement_text", faq_40_import)
-        setattr(FPQ1Contract, "generate_faq41_endorsement_text", faq_41_import)
-        setattr(FPQ1Contract, "generate_faq43_endorsement_text", faq_43_import)
+        language_content = fr if "fr" in self.locale else en
+        for method_name in _SECTION_GENERATORS + _ENDORSEMENT_GENERATORS:
+            generator = getattr(language_content, method_name)
+            # Generators that read the contract take it as ``self``; the others only return static text.
+            if "self" in inspect.signature(generator).parameters:
+                generator = MethodType(generator, self)
+            setattr(self, method_name, generator)
+        # The FAQ 37A endorsement shares the FAQ 37AB text.
+        self.generate_faq37a_endorsement_text = self.generate_faq37ab_endorsement_text
 
     def generate_contract_text(self) -> str:
         """

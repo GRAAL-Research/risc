@@ -1,12 +1,10 @@
 import random
-from typing import List
 
 import numpy as np
 import torch
 from faker import Faker
 from tqdm import tqdm
 
-from .premium_faker import QuebecPremiumFaker
 from ... import Premium
 from ...domain.contract import FPQ1Contract
 from ...domain.insuree import Insuree
@@ -18,6 +16,7 @@ from ...faker.contract_faker.tools import generate_a_client_number
 from ...faker.insuree_faker.insuree_faker import InsureeFaker
 from ...faker.protections_faker.protections_faker import ProtectionsFaker
 from ...faker.vehicule_faker.vehicle_faker import QuebecVehicleFaker
+from .premium_faker import QuebecPremiumFaker
 
 
 class FPQ1ContractFaker:
@@ -94,7 +93,7 @@ class FPQ1ContractFaker:
             locale=self.locale,
         )
 
-    def sample_contracts(self, number_sample: int) -> List:
+    def sample_contracts(self, number_sample: int) -> list:
         """
         Method to generate a sample of `number_sample` of contracts.
 

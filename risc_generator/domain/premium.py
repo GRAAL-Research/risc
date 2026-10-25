@@ -1,10 +1,8 @@
-from typing import Dict, Union
-
 from .tools import change_to_snake_case
 
 
 class Premium:
-    def __init__(self, **kwargs: Dict) -> None:
+    def __init__(self, **kwargs: dict) -> None:
         """
         A premium for the protections that generate a premium increase. Namely, liability coverage, property damage
         coverage (B1 to B4), and endorsement 20A, 33, 34 and 43.
@@ -19,14 +17,14 @@ class Premium:
 
         self.total = sum(list(self.__dict__.values()))  # The total premium amount
 
-    def get_premium(self, item: str) -> Union[str, None]:
+    def get_premium(self, item: str) -> str | None:
         item = change_to_snake_case(item)
         value = None
         if self.get(item) is not None:
             value = str(self.get(item))
         return value
 
-    def get(self, item: str) -> Union[int, None]:
+    def get(self, item: str) -> int | None:
         """
         Method to get a premium value for a specific protection (item). If the premium does not include the
         protection premium, it means it is not covered. Thus, we return a None.

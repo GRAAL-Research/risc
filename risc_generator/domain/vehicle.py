@@ -1,6 +1,3 @@
-from typing import Union
-
-
 class Vehicle:
     def __init__(
         self, year: int, make: str, model: str, vin: str, purchase_condition: str, electric_vehicle: bool
@@ -34,7 +31,7 @@ class Vehicle:
         """
         return self.electric_vehicle
 
-    def format_vehicle_complete_details(self, with_text: Union[None, str] = None) -> str:
+    def format_vehicle_complete_details(self, with_text: None | str = None) -> str:
         """
         Method to format the vehicle complete details.
 

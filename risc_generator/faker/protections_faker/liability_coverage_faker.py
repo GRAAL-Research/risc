@@ -1,11 +1,9 @@
-from typing import Dict
-
 from ...faker.protections_faker.protections_amount_faker import (
     liability_coverage_amount_faker,
 )
 
 
-def liability_coverage_faker(is_only_liability_coverage: bool) -> Dict:
+def liability_coverage_faker(is_only_liability_coverage: bool) -> dict:
     """
     Faker function to generate a liability coverage amount base.
 

@@ -1,6 +1,5 @@
-from unittest import TestCase
-
 import datetime
+from unittest import TestCase
 
 from risc_generator import Insuree
 

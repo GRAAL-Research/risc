@@ -1,17 +1,17 @@
 import re
 
-from ..general_header import generate_general_pages_header_text
-from ...config import (
-    FAKE_INSURER_ADDRESS,
-    FAKE_INSURER_NAME,
-    FAKE_INSURER_WEBSITE,
-    NEW_PAGE_TAG,
-    FAKE_FIDELITY_PROGRAM_NAME_EN,
-    FAKE_ROADSIDE_PROGRAM_NAME,
-)
 from ....domain.premium import Premium
 from ....domain.protections import Protections
 from ....domain.tools import change_to_snake_case
+from ...config import (
+    FAKE_FIDELITY_PROGRAM_NAME_EN,
+    FAKE_INSURER_ADDRESS,
+    FAKE_INSURER_NAME,
+    FAKE_INSURER_WEBSITE,
+    FAKE_ROADSIDE_PROGRAM_NAME,
+    NEW_PAGE_TAG,
+)
+from ..general_header import generate_general_pages_header_text
 
 all_property_damage_protection = [
     "PropertyDamageB1Coverage",
@@ -45,7 +45,7 @@ def generate_declaration_header_text(policy_number: str) -> str:
         The declaration header text.
     """
     general_header_text = generate_general_pages_header_text(policy_number=policy_number)
-    header = f"{general_header_text}" "DECLARATIONS\n" "ISSUE of your new insurance policy\n"
+    header = f"{general_header_text}DECLARATIONS\nISSUE of your new insurance policy\n"
     return header
 
 
@@ -306,7 +306,6 @@ def generate_item_4_text(protections: Protections, premium: Premium) -> str:
 
     # We construct the text to use using template filling.
     for protection_name in all_property_damage_protection:
-
         # To extract the proper property damage text, we use the protection damage name written in CamelCase
         # and convert it into snake_case.
         snake_case_protection_name = change_to_snake_case(protection_name)
@@ -336,7 +335,7 @@ def generate_item_4_text(protections: Protections, premium: Premium) -> str:
     # Endorsement text
     endorsement_protections = protections.endorsement_protections()
     for endorsement in endorsement_protections:
-        if endorsement.strip("Coverage") in endorsement_with_possible_premium and protections.is_protected(
+        if endorsement.removesuffix("Coverage") in endorsement_with_possible_premium and protections.is_protected(
             f"{endorsement}"
         ):
             text += "Endorsement(s): "
@@ -344,7 +343,7 @@ def generate_item_4_text(protections: Protections, premium: Premium) -> str:
             endorsement_number = re.findall(r'[0-9]+[AB]*', endorsement)[0].lower()
             text += eval(f"generate_faq_{endorsement_number}_text(faq_premium={faq_premium})")
 
-        elif endorsement.strip("Coverage") in endorsement_without_premium and protections.is_protected(
+        elif endorsement.removesuffix("Coverage") in endorsement_without_premium and protections.is_protected(
             f"{endorsement}"
         ):
             text += "Endorsement(s): "

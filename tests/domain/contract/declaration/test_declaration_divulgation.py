@@ -1,4 +1,4 @@
-from risc_generator.content import fr, en
+from risc_generator.content import en, fr
 from tests.domain.contract.contract_base import ContractTestBase
 
 INCLUDE = "include"

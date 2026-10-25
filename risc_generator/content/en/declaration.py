@@ -1,15 +1,15 @@
+from ..config import NEW_PAGE_TAG
 from .declaration_articles.items import (
     generate_declaration_header_text,
+    generate_divulgation_text,
     generate_item_1_text,
     generate_item_2_text,
     generate_item_3_text,
     generate_item_4_text,
     generate_item_6_text,
     generate_item_7_text,
-    generate_divulgation_text,
     generate_premium_ticket,
 )
-from ..config import NEW_PAGE_TAG
 
 
 def generate_declaration_text(self) -> str:

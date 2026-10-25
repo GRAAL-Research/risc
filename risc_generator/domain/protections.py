@@ -1,13 +1,11 @@
-from typing import Dict, List, Union
-
-from .tools import change_to_snake_case, change_to_camel_case
+from .tools import change_to_camel_case, change_to_snake_case
 
 INCLUDE = "include"
 EXCLUDE = "exclude"
 
 
 class Protections:
-    def __init__(self, protections: Dict) -> None:
+    def __init__(self, protections: dict) -> None:
         for key, value in protections.items():
             # We save attribute in snake case format and use the same function in a getter method
             # to get the proper attribute using the CamelCase coverage format.
@@ -66,7 +64,7 @@ class Protections:
 
         return is_protected
 
-    def property_damage_protections(self) -> List:
+    def property_damage_protections(self) -> list:
         """
         Method to extract the property damage with a protection (with a deductible). E.g. protection that are
         not by default include under another protection. For example, if a protection is a B1, than B2, B3 and B4
@@ -94,7 +92,7 @@ class Protections:
 
         return property_damage_protections
 
-    def endorsement_protections(self) -> List:
+    def endorsement_protections(self) -> list:
         """
         Method to get a list of all the endorsement protections in CamelCase.
 
@@ -103,7 +101,7 @@ class Protections:
         """
         return [change_to_camel_case(key) for key, _ in self.__dict__.items() if "f_a_q" in key]
 
-    def get(self, item: str) -> Union[int, None]:
+    def get(self, item: str) -> int | None:
         """
         Method to get a deductible amount for a specific protection (item).
 

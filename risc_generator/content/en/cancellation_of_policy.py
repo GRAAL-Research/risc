@@ -1,5 +1,5 @@
+from ..config import GENERAL_FAKE_PHONE_NUMBER, GENERAL_FAKE_PHONE_NUMBER_1_800, NEW_PAGE_TAG
 from .general_header import generate_general_pages_header_text
-from ..config import GENERAL_FAKE_PHONE_NUMBER_1_800, GENERAL_FAKE_PHONE_NUMBER, NEW_PAGE_TAG
 
 
 def generate_cancellation_of_policy_text(self):

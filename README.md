@@ -5,13 +5,11 @@
 [![PyPI Status](https://pepy.tech/badge/risc_generator)](https://pepy.tech/project/risc_generator)
 [![Downloads](https://pepy.tech/badge/risc_generator/month)](https://pepy.tech/project/risc_generator)
 
-[![Formatting](https://github.com/GRAAL-Research/risc/actions/workflows/formatting.yml/badge.svg?branch=stable)](https://github.com/GRAAL-Research/risc/actions/workflows/formatting.yml)
-[![Linting](https://github.com/GRAAL-Research/risc/actions/workflows/linting.yml/badge.svg?branch=stable)](https://github.com/GRAAL-Research/risc/actions/workflows/linting.yml)
-[![Tests](https://github.com/GRAAL-Research/risc/actions/workflows/tests.yml/badge.svg?branch=stable)](https://github.com/GRAAL-Research/risc/actions/workflows/tests.yml)
+[![Tests](https://github.com/GRAAL-Research/risc/actions/workflows/tests.yml/badge.svg?branch=main)](https://github.com/GRAAL-Research/risc/actions/workflows/tests.yml)
 
 [![codecov](https://codecov.io/gh/GRAAL-Research/risc/branch/main/graph/badge.svg)](https://codecov.io/gh/GRAAL-Research/risc)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/62464699ff0740d0b8064227c4274b98)](https://www.codacy.com/gh/GRAAL-Research/risc/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=GRAAL-Research/risc&amp;utm_campaign=Badge_Grade)
-<a href="https://github.com/psf/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 [![pr welcome](https://img.shields.io/badge/PR-Welcome-%23FF8300.svg?)](https://img.shields.io/badge/PR-Welcome-%23FF8300.svg?)
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](http://www.gnu.org/licenses/lgpl-3.0)
@@ -25,13 +23,13 @@ the Quebec regulatory insurance form in French and English.
 Use RISC to generate look-a-like Quebec Car insurance forms (FPQ1) both in French and English. RISC simulation is
 deterministic; thus, it can generate an aligned insurance contract (i.e. same driver data) using an initial seed.
 RISC uses a pretrained TVAE model on a private dataset to generate look-a-like car protections.
-See our [article here](https://arxiv.org/abs/2304.04212) for more detail about RISC implementation and generated the 
+See our [article here](https://arxiv.org/abs/2304.04212) for more detail about RISC implementation and generated the
 [RISCBAC](https://huggingface.co/datasets/davebulaval/RISCBAC) dataset specification.
 
-RISC was written in Python 3.9 and is compatible with the __latest version of PyTorch__ and __Python >= 3.8__ (**SciPy
-seems difficult to build on Python 3.11. Thus, we don't support Python 3.11 for now**).
+RISC supports __Python 3.11 to 3.14__, NumPy 2 and recent versions of PyTorch. The pre-trained protections model is a
+TVAE model from [SDV](https://github.com/sdv-dev/SDV) 1.x; SDV 2 is not supported yet.
 
-## Getting Started:
+## Getting Started
 
 ```python
 from risc_generator import TVAEFPQ1ContractFaker
@@ -39,47 +37,59 @@ from risc_generator import TVAEFPQ1ContractFaker
 seed = 42
 n = 10
 
-# Let's sample 10 insurance English insurance contracts (default configuration).
-en_fpq1_synthetic_dataset = TVAEFPQ1ContractFaker(seed=seed).sample_contracts(number_sample=n)
+# Sample 10 English insurance contracts (default configuration).
+en_contracts = TVAEFPQ1ContractFaker(seed=seed).sample_contracts(number_sample=n)
 
-# Now, let's do it for French contracts.
-fr_fpq1_synthetic_dataset = TVAEFPQ1ContractFaker(language="fr", seed=seed).sample_contracts(number_sample=n)
+# Now, the same for French contracts.
+fr_contracts = TVAEFPQ1ContractFaker(language="fr", seed=seed).sample_contracts(number_sample=n)
 
-# Since we have used the same seed, both datasets share the same insuree information.
+# Since we used the same seed, both datasets share the same insuree, vehicle and protections.
+# Each contract is an FPQ1Contract object; get its full text with
+print(en_contracts[0].generate_contract_text())
 
-# Use our own TVAE model:
-fpq1_synthetic_dataset = TVAEFPQ1ContractFaker(tvae_synthetic_data_faker_model_path="a_path_to_a_tvae_.pkl",
-                                               language="fr", seed=seed).sample_contracts(number_sample=n)
+# Use your own TVAE model (an SDV 1.x ``TVAESynthesizer`` saved with ``synthesizer.save``):
+contracts = TVAEFPQ1ContractFaker(
+    tvae_synthetic_data_faker_model_path="a_path_to_a_tvae_model.pkl", language="fr", seed=seed
+).sample_contracts(number_sample=n)
+```
 
-# You can also create a new FPQ1ContractFaker using another type of model using our interface.
+You can also plug another type of protections model by implementing the `SyntheticProtectionsModel` interface:
 
-from risc_generator import FPQ1ContractFaker, ProtectionsFaker
+```python
+from risc_generator import FPQ1ContractFaker, ProtectionsFaker, SyntheticProtectionsModel
 
 
-class RuleBaseFPQ1ContractFaker(FPQ1ContractFaker):
-    def __init__(self, language: str = "en", seed: int = 42):
-        protection_faker = ProtectionsFaker(
-            model=ARuleBaseProtectionFaker()
-        )
-        super().__init__(protection_faker, language, seed=seed)
+class RuleBasedProtectionsModel(SyntheticProtectionsModel):
+    def sample(self, num_sample: int, **kwargs) -> dict:
+        # Return a dictionary of protections (same keys as the pre-trained TVAE model).
+        ...
+
+
+class RuleBasedFPQ1ContractFaker(FPQ1ContractFaker):
+    def __init__(self, language: str = "en", seed: int = 42) -> None:
+        protections_faker = ProtectionsFaker(model=RuleBasedProtectionsModel())
+        super().__init__(protections_faker, language, seed=seed)
 ```
 
 ------------------
 
 ## Installation
 
-Before installing RISC, you must have your environment's latest version of [PyTorch](https://pytorch.org/).
+RISC requires Python 3.11 or later. [PyTorch](https://pytorch.org/) is installed as a dependency; install it first
+if you need a specific build (e.g. CPU only or a given CUDA version).
 
 - **Install the stable version of RISC:**
 
 ```sh
 pip install risc_generator
+# or
+uv pip install risc_generator
 ```
 
 - **Install the latest development version of RISC:**
 
 ```sh
-pip install -U git+https://github.com/GRAAL-Research/risc.git@dev
+pip install -U git+https://github.com/GRAAL-Research/risc.git@main
 ```
 
 ------------------

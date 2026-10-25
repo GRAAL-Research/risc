@@ -2,12 +2,12 @@ import random
 
 from faker import Faker
 
-from .vehicle_provider import VehicleProvider
 from ...domain.vehicle import Vehicle
 from ...faker.vehicule_faker.purchase_condition_faker import (
     QuebecPurchaseConditionFaker,
 )
-from ...faker.vehicule_faker.tools import is_valid_vehicle_year, generate_vin
+from ...faker.vehicule_faker.tools import generate_vin, is_valid_vehicle_year
+from .vehicle_provider import VehicleProvider
 
 
 class QuebecVehicleFaker(Faker):

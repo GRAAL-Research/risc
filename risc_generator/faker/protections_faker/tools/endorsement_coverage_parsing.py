@@ -1,10 +1,8 @@
-from typing import Dict
-
 INCLUDE = "include"
 EXCLUDE = "exclude"
 
 
-def endorsement_coverage_parsing(synthetic_coverage: Dict) -> Dict:
+def endorsement_coverage_parsing(synthetic_coverage: dict) -> dict:
     """
     Function to parse the synthetic coverage protections to modify the endorsement (e.g. "FAQ") into 'include' value
     if 1 and in 'exclude' value otherwise (0 value).

@@ -1,5 +1,5 @@
-from risc_generator import Protections, FPQ1Contract, Premium, Vehicle
-from risc_generator.content import fr, en
+from risc_generator import FPQ1Contract, Premium, Protections, Vehicle
+from risc_generator.content import en, fr
 from tests.domain.contract.contract_base import ContractTestBase
 
 INCLUDE = "include"
@@ -55,7 +55,7 @@ class ContractDeclarationTest(ContractTestBase):
 
         an_insured_car = "AMaker - AModel - 2020 - Numéro de série 1234567890 - Achat neuf"
 
-        expected = "Article 3. CARACTÉRISTIQUES DU VÉHICULE DÉSIGNÉ 1\n" f"{an_insured_car}\n"
+        expected = f"Article 3. CARACTÉRISTIQUES DU VÉHICULE DÉSIGNÉ 1\n{an_insured_car}\n"
 
         self.assertEqual(expected, actual)
 
@@ -107,7 +107,7 @@ class ContractDeclarationTest(ContractTestBase):
 
         an_insured_car = "AMaker - AModel - 2020 - Numéro de série 1234567890 - Achat usagé"
 
-        expected = "Article 3. CARACTÉRISTIQUES DU VÉHICULE DÉSIGNÉ 1\n" f"{an_insured_car}\n"
+        expected = f"Article 3. CARACTÉRISTIQUES DU VÉHICULE DÉSIGNÉ 1\n{an_insured_car}\n"
 
         self.assertEqual(expected, actual)
 
@@ -279,7 +279,7 @@ class ContractDeclarationTest(ContractTestBase):
 
         an_insured_car = "AMaker - AModel - 2020 - Serial number 1234567890 - Purchase new"
 
-        expected = "Item 3. PARTICULARS OF THE DESCRIBED VEHICLE 1\n" f"{an_insured_car}\n"
+        expected = f"Item 3. PARTICULARS OF THE DESCRIBED VEHICLE 1\n{an_insured_car}\n"
 
         self.assertEqual(expected, actual)
 
@@ -331,7 +331,7 @@ class ContractDeclarationTest(ContractTestBase):
 
         an_insured_car = "AMaker - AModel - 2020 - Serial number 1234567890 - Purchase used"
 
-        expected = "Item 3. PARTICULARS OF THE DESCRIBED VEHICLE 1\n" f"{an_insured_car}\n"
+        expected = f"Item 3. PARTICULARS OF THE DESCRIBED VEHICLE 1\n{an_insured_car}\n"
 
         self.assertEqual(expected, actual)
 

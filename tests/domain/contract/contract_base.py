@@ -2,7 +2,7 @@ import datetime
 from unittest import TestCase
 from unittest.mock import MagicMock
 
-from risc_generator import Protections, Premium
+from risc_generator import Premium, Protections
 from risc_generator.domain.insuree import Insuree
 from risc_generator.domain.vehicle import Vehicle
 

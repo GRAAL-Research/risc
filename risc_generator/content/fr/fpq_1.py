@@ -1279,7 +1279,6 @@ def generate_definitions_text() -> str:
     return text
 
 
-@staticmethod
 def generate_fpq1_text() -> str:
     """
     Static method to generate a complete FPQ1 contract text.
