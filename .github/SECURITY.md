@@ -2,20 +2,18 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+Only the latest release of RISC receives fixes.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+| Version | Python        | Supported          |
+| ------- | ------------- | ------------------ |
+| 0.1.x   | 3.11 to 3.14  | :white_check_mark: |
+| < 0.1   | 3.8 to 3.10   | :x:                |
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+Please do not open a public issue for a security vulnerability. Email the maintainer at
+david.beauchemin.5@ulaval.ca with a description of the issue and, if possible, a minimal example that reproduces it.
+You should receive an answer within two weeks.
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+Note that RISC loads its protections model with pickle (through SDV). Only load TVAE models from sources you trust:
+a malicious pickle file can run arbitrary code when loaded.
