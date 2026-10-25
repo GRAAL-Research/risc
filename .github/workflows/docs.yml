@@ -1,0 +1,22 @@
+name: Documentation
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v7
+      - name: Validate CITATION.cff
+        run: uvx --from cffconvert cffconvert --validate
+      - name: Validate YAML files
+        run: uvx --from pyyaml python -c "import sys, yaml; [yaml.safe_load(open(f)) for f in sys.argv[1:]]" .github/*.yml .github/workflows/*.yml CITATION.cff
+      - name: Check Markdown links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --offline --no-progress --include-fragments './**/*.md'
+          fail: true

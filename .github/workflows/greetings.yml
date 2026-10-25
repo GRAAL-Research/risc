@@ -11,6 +11,6 @@ jobs:
     steps:
       - uses: actions/first-interaction@v3
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          issue-message: "Thank you for you interest in improving RISC."
-          pr-message: "Thank you for you interest in improving RISC."
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          issue_message: "Thank you for your interest in improving RISC."
+          pr_message: "Thank you for your interest in improving RISC."

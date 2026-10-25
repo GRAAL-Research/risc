@@ -17,6 +17,9 @@ The initial functionalities of simulation for automobile insurance contracts for
   model file was not shipped inside the package.
 - Fix contracts sharing their language: creating a French contract after an English one switched the English
   contract text to French. Text generators are now bound per contract instead of on the `FPQ1Contract` class.
+- Fix rented vehicles: contracts with the FAQ 5A endorsement (rental) now always get a new vehicle, as intended. The
+  check used the wrong coverage key (`FAQ5aCoverage`) and was always false. Contracts with a FAQ 5A endorsement
+  generated with a given seed differ from previous versions (and from the published RISCBAC dataset).
 - Load the TVAE model with `sdv.utils.load_synthesizer` when available (`TVAESynthesizer.load` is deprecated).
 - Add `risc_generator.__version__`.
 - Move the packaging to `pyproject.toml` (PEP 621) and replace black and pylint with Ruff.
