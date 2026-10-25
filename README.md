@@ -14,16 +14,16 @@
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL%20v3-blue.svg)](http://www.gnu.org/licenses/lgpl-3.0)
 </div>
 
-## Here is RISC.
+## Here is RISC
 
 RISC is an open-source Python package data generator. It generates look-alike automobile insurance contracts based on
-the Quebec regulatory insurance form in French and English.
+the Quebec regulatory insurance form (FPQ1) in French and English.
 
-Use RISC to generate look-a-like Quebec Car insurance forms (FPQ1) both in French and English. RISC simulation is
-deterministic; thus, it can generate an aligned insurance contract (i.e. same driver data) using an initial seed.
-RISC uses a pretrained TVAE model on a private dataset to generate look-a-like car protections.
-See our [article here](https://arxiv.org/abs/2304.04212) for more detail about RISC implementation and generated the
-[RISCBAC](https://huggingface.co/datasets/davebulaval/RISCBAC) dataset specification.
+RISC simulation is deterministic: with the same seed, it generates aligned French and English contracts (same insuree,
+vehicle and protections). RISC uses a TVAE model, pre-trained on a private dataset of a Canadian insurer, to generate
+look-alike car protections. See our [article](https://arxiv.org/abs/2304.04212) for more details about the RISC
+implementation and the specification of the [RISCBAC](https://huggingface.co/datasets/davebulaval/RISCBAC) dataset
+generated with it.
 
 RISC supports __Python 3.11 to 3.14__, NumPy 2 and recent versions of PyTorch. The pre-trained protections model is a
 TVAE model from [SDV](https://github.com/sdv-dev/SDV) 1.x; SDV 2 is not supported yet.
@@ -44,7 +44,10 @@ fr_contracts = TVAEFPQ1ContractFaker(language="fr", seed=seed).sample_contracts(
 
 # Since we used the same seed, both datasets share the same insuree, vehicle and protections.
 # Each contract is an FPQ1Contract object; get its full text with
-print(en_contracts[0].generate_contract_text())
+contract_text = en_contracts[0].generate_contract_text()
+
+# The text contains a "<###NEW_PAGE###>" marker at each page break of the paper form.
+pages = contract_text.split("<###NEW_PAGE###>")
 
 # Use your own TVAE model (an SDV 1.x ``TVAESynthesizer`` saved with ``synthesizer.save``):
 contracts = TVAEFPQ1ContractFaker(
@@ -79,6 +82,8 @@ if you need a specific build (e.g. CPU only or a given CUDA version).
 
 - **Install the stable version of RISC:**
 
+> Python 3.11+ support starts with RISC 0.1.0. Until it is published on PyPI, install the development version below.
+
 ```sh
 pip install risc_generator
 # or
@@ -93,12 +98,19 @@ pip install -U git+https://github.com/GRAAL-Research/risc.git@main
 
 ------------------
 
+## RISCBAC Dataset
+
+[RISCBAC](https://huggingface.co/datasets/davebulaval/RISCBAC) contains 10,000 English and French insurance contracts
+generated with RISC using the same seed. The `RISCBAC.py` file at the root of this repository is its Hugging Face
+`datasets` loading script, and `RISCBACCHANGELOG.md` tracks the dataset versions.
+
+------------------
+
 ## Cite
 
-Use the following for the article or dataset;
+Use the following for the article or dataset:
 
 ```
-
 @article{Beauchemin2023RISC,
 	author = {Beauchemin, David and Khoury, Richard},
 	journal = {Proceedings of the Canadian Conference on Artificial Intelligence},
@@ -110,7 +122,7 @@ Use the following for the article or dataset;
 }
 ```
 
-and this one for the package;
+and this one for the package:
 
 ```
 @misc{risc,

@@ -1,10 +1,23 @@
 cff-version: 1.2.0
-preferred-citation:
-  type: misc
-  message: "If you use RISC, please cite it as below."
-  authors:
+message: "If you use RISC, please cite it as below."
+title: "RISC: an open-source Python package data generator to generate look-alike automobile insurance contracts based on the Quebec regulatory insurance form in French and English"
+type: software
+authors:
   - family-names: "Beauchemin"
     given-names: "David"
-  title: "RISC: an open-source Python package data generator to generates look-alike automobile insurance contracts based on the Quebec regulatory insurance form in French and English"
-  url: "https://github.com/GRAAL-Research/risc"
+repository-code: "https://github.com/GRAAL-Research/risc"
+license: LGPL-3.0-only
+version: 0.1.0
+preferred-citation:
+  type: conference-paper
+  title: "RISC: Generating Realistic Synthetic Bilingual Insurance Contract"
+  authors:
+    - family-names: "Beauchemin"
+      given-names: "David"
+    - family-names: "Khoury"
+      given-names: "Richard"
+  collection-title: "Proceedings of the Canadian Conference on Artificial Intelligence"
+  publisher:
+    name: "Canadian Artificial Intelligence Association (CAIAC)"
   year: 2023
+  url: "https://caiac.pubpub.org/pub/k18zu6c9"
