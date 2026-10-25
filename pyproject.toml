@@ -1,4 +1,93 @@
-[tool.black]
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "risc_generator"
+dynamic = ["version"]
+description = "RISC, an open-source Python package data generator. RISC generates look-alike automobile insurance contracts based on the Quebec regulatory insurance form in French and English."
+readme = "README.md"
+license = "LGPL-3.0-only"
+license-files = ["LICENSE"]
+authors = [{ name = "David Beauchemin", email = "david.beauchemin.5@ulaval.ca" }]
+requires-python = ">=3.11"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "babel>=2.12",
+    "faker>=18.0",
+    "faker-vehicle>=0.2.0",
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "python-dateutil>=2.8",
+    "scipy>=1.11",
+    # The pre-trained TVAE model was fitted with SDV 1.14.0. SDV 2.0 removed ``TVAESynthesizer.load`` and changed
+    # the ``sample`` return type, so we stay on the 1.x line.
+    "sdv>=1.14.0,<2",
+    "torch>=2.1",
+    "tqdm>=4.65",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "pytest-cov>=5", "ruff>=0.8"]
+
+[project.urls]
+Homepage = "https://github.com/GRAAL-Research/risc"
+Source = "https://github.com/GRAAL-Research/risc"
+Issues = "https://github.com/GRAAL-Research/risc/issues"
+Article = "https://arxiv.org/abs/2304.04212"
+Dataset = "https://huggingface.co/datasets/davebulaval/RISCBAC"
+
+[tool.setuptools.dynamic]
+version = { file = "version.txt" }
+
+[tool.setuptools.packages.find]
+include = ["risc_generator*"]
+
+[tool.setuptools.package-data]
+risc_generator = ["resources/*.pkl"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["model: tests that load the pre-trained TVAE model (slower)"]
+
+[tool.ruff]
 line-length = 120
-skip-string-normalization = true
-extend-exclude = "/(slides)/"
+target-version = "py311"
+extend-exclude = ["slides"]
+
+[tool.ruff.format]
+quote-style = "preserve"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = [
+    # The package exposes its public API through star imports in the ``__init__`` modules.
+    "F403",
+    "F405",
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Contract templates are long natural-language strings.
+"risc_generator/content/**" = ["E501"]
+"tests/**" = ["E501"]
+
+[tool.coverage.run]
+source = ["risc_generator"]
+
+[tool.coverage.report]
+exclude_also = ["raise NotImplementedError", "if __name__ == .__main__.:"]

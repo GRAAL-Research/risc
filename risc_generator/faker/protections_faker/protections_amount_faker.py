@@ -1,8 +1,7 @@
 import random
-from typing import List
 
 
-def liability_coverage_amount_faker(liability_amount_probs: List) -> int:
+def liability_coverage_amount_faker(liability_amount_probs: list) -> int:
     """
     Faker function to generate a fake liability coverage base on probability vectors (2 elements). Liability amount can
      either be 1 million or 2 million dollars.

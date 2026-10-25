@@ -1,7 +1,4 @@
-from typing import Dict
-
-
-def is_valid_protections(synthetic_coverage: Dict, can_have_faq_41: bool) -> bool:
+def is_valid_protections(synthetic_coverage: dict, can_have_faq_41: bool) -> bool:
     """
     Function to validate if a set of synthetic coverage is valid based on the Quebec insurance market.
 
@@ -56,7 +53,7 @@ def is_valid_protections(synthetic_coverage: Dict, can_have_faq_41: bool) -> boo
     return valid_protections
 
 
-def is_only_liability_coverage(synthetic_coverage: Dict) -> bool:
+def is_only_liability_coverage(synthetic_coverage: dict) -> bool:
     """
     Function to validate if a synthetic coverage include only a liability coverage and no property damage coverage
     (B1 to B4).
@@ -79,7 +76,7 @@ def is_only_liability_coverage(synthetic_coverage: Dict) -> bool:
     return only_liability_coverage
 
 
-def include_b1_coverage(synthetic_coverage: Dict) -> bool:
+def include_b1_coverage(synthetic_coverage: dict) -> bool:
     """
     Function to validate if a synthetic coverage include a B1 property damage coverage.
 
@@ -91,7 +88,7 @@ def include_b1_coverage(synthetic_coverage: Dict) -> bool:
     return synthetic_coverage.get("PropertyDamageB1Coverage") == 1
 
 
-def include_b2_coverage(synthetic_coverage: Dict) -> bool:
+def include_b2_coverage(synthetic_coverage: dict) -> bool:
     """
     Function to validate if a synthetic coverage include a B2 property damage coverage.
 
@@ -103,7 +100,7 @@ def include_b2_coverage(synthetic_coverage: Dict) -> bool:
     return synthetic_coverage.get("PropertyDamageB2Coverage") == 1
 
 
-def include_b3_coverage(synthetic_coverage: Dict) -> bool:
+def include_b3_coverage(synthetic_coverage: dict) -> bool:
     """
     Function to validate if a synthetic coverage include a B3 property damage coverage.
 
@@ -115,7 +112,7 @@ def include_b3_coverage(synthetic_coverage: Dict) -> bool:
     return synthetic_coverage.get("PropertyDamageB3Coverage") == 1
 
 
-def include_b4_coverage(synthetic_coverage: Dict) -> bool:
+def include_b4_coverage(synthetic_coverage: dict) -> bool:
     """
     Function to validate if a synthetic coverage include a B4 property damage coverage.
 

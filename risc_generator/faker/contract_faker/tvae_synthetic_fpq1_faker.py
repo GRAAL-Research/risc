@@ -1,14 +1,15 @@
-import os
-from typing import Union
+from pathlib import Path
 
 from ...faker.contract_faker.contract_faker import FPQ1ContractFaker
 from ...faker.protections_faker.protections_faker import ProtectionsFaker
 from ...model.tvae_synthetic_protections_model_wrapper import TVAESyntheticProtectionsModelWrapper
 
+DEFAULT_TVAE_MODEL_PATH = Path(__file__).resolve().parents[2] / "resources" / "tvae_model_v2.pkl"
+
 
 class TVAEFPQ1ContractFaker(FPQ1ContractFaker):
     def __init__(
-        self, tvae_synthetic_data_faker_model_path: Union[None, str] = None, language: str = "en", seed: int = 42
+        self, tvae_synthetic_data_faker_model_path: None | str = None, language: str = "en", seed: int = 42
     ) -> None:
         """
         A FPQ1 contract faker using a TVAE synthetic protections model to generate synthetic protections using CPU.
@@ -23,9 +24,7 @@ class TVAEFPQ1ContractFaker(FPQ1ContractFaker):
         seed (int): The seed value to use for the generation seed. By default, 42.
         """
         if tvae_synthetic_data_faker_model_path is None:
-            tvae_synthetic_data_faker_model_path = (
-                os.path.join(os.path.dirname(__file__), '../../resources', "tvae_model_v1.pkl"),
-            )
+            tvae_synthetic_data_faker_model_path = str(DEFAULT_TVAE_MODEL_PATH)
         protection_faker = ProtectionsFaker(
             model=TVAESyntheticProtectionsModelWrapper(tvae_synthetic_data_faker_model_path)
         )

@@ -1,8 +1,7 @@
-from ..endorsements.endorsement_header import generate_endorsement_page_header_text
 from ...config import NEW_PAGE_TAG
+from ..endorsements.endorsement_header import generate_endorsement_page_header_text
 
 
-@staticmethod
 def generate_faq34ab_endorsement_text() -> str:
     endorsement_header_text = generate_endorsement_page_header_text()
     text = (

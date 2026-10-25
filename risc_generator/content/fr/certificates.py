@@ -1,9 +1,9 @@
 from ..config import (
     CLAIMS_FAKE_PHONE_NUMBER,
     CLAIMS_FAKE_PHONE_NUMBER_1_800,
-    GENERAL_FAKE_PHONE_NUMBER_1_800,
-    FAKE_INSURER_WEBSITE,
     FAKE_INSURER_NAME,
+    FAKE_INSURER_WEBSITE,
+    GENERAL_FAKE_PHONE_NUMBER_1_800,
     NEW_PAGE_TAG,
 )
 from ..fr_en.back_of_certificates import back_of_certificates_text

@@ -1,10 +1,11 @@
 #!/bin/sh
 
 current_branch=$(git rev-parse --abbrev-ref HEAD)
-if [ $current_branch != "stable" ]; then
-  echo "The current branch must be 'stable'."
+if [ "$current_branch" != "main" ]; then
+  echo "The current branch must be 'main'."
   exit 1
 fi
 
-DEEPPARSE_RELEASE_BUILD=1 python setup.py sdist bdist_wheel
-python -m twine upload dist/*
+rm -rf dist
+uv build
+uvx twine upload dist/*

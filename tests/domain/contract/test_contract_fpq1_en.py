@@ -2,16 +2,16 @@ import re
 
 from risc_generator import NEW_PAGE_TAG, FPQ1Contract
 from risc_generator.content.en.fpq_1 import (
-    generate_toc_text,
-    generate_introduction_text,
+    generate_cancellation_table_text,
+    generate_dates_text,
     generate_declarations_text,
+    generate_definitions_text,
+    generate_general_conditions_text,
+    generate_introduction_text,
+    generate_loss_and_claims_reporting_text,
     generate_section_a_text,
     generate_section_b_text,
-    generate_general_conditions_text,
-    generate_loss_and_claims_reporting_text,
-    generate_dates_text,
-    generate_cancellation_table_text,
-    generate_definitions_text,
+    generate_toc_text,
 )
 from tests.domain.contract.contract_base import ContractTestBase
 

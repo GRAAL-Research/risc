@@ -1,7 +1,7 @@
 # pylint: disable=too-many-locals
 
 
-from risc_generator import Protections, FPQ1Contract
+from risc_generator import FPQ1Contract, Protections
 from tests.domain.contract.contract_base import ContractTestBase
 
 include = "include"

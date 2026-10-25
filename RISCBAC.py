@@ -31,12 +31,12 @@ Contract}},
 
 # You can copy an official description
 _DESCRIPTION = """\
-RISCBAC was created using [RISC](https://github.com/GRAAL-Research/risc), an open-source Python package data 
-generator. RISC generates look-alike automobile insurance contracts based on the Quebec regulatory insurance 
+RISCBAC was created using [RISC](https://github.com/GRAAL-Research/risc), an open-source Python package data
+generator. RISC generates look-alike automobile insurance contracts based on the Quebec regulatory insurance
 form in French and English.
 
-It contains 10,000 English and French insurance contracts generated using the same seed. Thus, contracts share 
-the same deterministic synthetic data (RISCBAC can be used as an aligned dataset). RISC can be used to generate 
+It contains 10,000 English and French insurance contracts generated using the same seed. Thus, contracts share
+the same deterministic synthetic data (RISCBAC can be used as an aligned dataset). RISC can be used to generate
 more data for RISCBAC.
 """
 
@@ -95,10 +95,10 @@ class RISCBAC(datasets.GeneratorBasedBuilder):
                 ),
             ]
         else:
-            raise ValueError(f"The config name {self.config.name} is not supported. Please use " "'en' or 'fr'.")
+            raise ValueError(f"The config name {self.config.name} is not supported. Please use 'en' or 'fr'.")
 
     def _generate_examples(self, filepath):
-        with open(filepath, "r", encoding="utf-8") as f:
+        with open(filepath, encoding="utf-8") as f:
             for key, line in enumerate(f):
                 d = json.loads(line)
                 yield key, d

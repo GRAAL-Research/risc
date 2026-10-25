@@ -4,7 +4,7 @@ import numpy as np
 import torch
 from faker import Faker
 
-from ... import Insuree, Protections, Premium, change_to_snake_case
+from ... import Insuree, Premium, Protections, change_to_snake_case
 
 
 class QuebecPremiumFaker(Faker):

@@ -1,4 +1,4 @@
-from ..config import FAKE_INSURER_WEBSITE, FAKE_INSURER_NAME, NEW_PAGE_TAG, FAKE_MENTAL_HEALTH_PROGRAM_NAME
+from ..config import FAKE_INSURER_NAME, FAKE_INSURER_WEBSITE, FAKE_MENTAL_HEALTH_PROGRAM_NAME, NEW_PAGE_TAG
 
 
 def generate_client_advantages_text(self) -> str:

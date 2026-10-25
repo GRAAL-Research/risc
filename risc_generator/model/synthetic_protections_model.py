@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-from typing import Dict
 
 
 class SyntheticProtectionsModel(ABC):
@@ -8,7 +7,7 @@ class SyntheticProtectionsModel(ABC):
     """
 
     @abstractmethod
-    def sample(self, num_sample: int, **kwargs) -> Dict:
+    def sample(self, num_sample: int, **kwargs) -> dict:
         """
         Sample num_sample of a synthetic protections using a pre-trained model.
 

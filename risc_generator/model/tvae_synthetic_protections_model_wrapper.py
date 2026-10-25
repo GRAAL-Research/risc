@@ -1,6 +1,11 @@
-from typing import Dict
+import warnings
 
 from sdv.single_table import TVAESynthesizer
+
+try:
+    from sdv.utils import load_synthesizer
+except ImportError:  # Older SDV 1.x releases only expose the (now deprecated) ``TVAESynthesizer.load``.
+    load_synthesizer = TVAESynthesizer.load
 
 from ..model.synthetic_protections_model import SyntheticProtectionsModel
 
@@ -11,9 +16,12 @@ class TVAESyntheticProtectionsModelWrapper(SyntheticProtectionsModel):
         A Synthetic protection model using a TVAE architecture.
         See CTGAN (https://pypi.org/project/ctgan/) for more details.
         """
-        self.model = TVAESynthesizer.load(model_path)
+        with warnings.catch_warnings():
+            # The pre-trained model was fitted with SDV 1.14.0; SDV warns on every load with a newer version.
+            warnings.filterwarnings("ignore", message=".*this synthesizer was created on version.*")
+            self.model = load_synthesizer(model_path)
 
-    def sample(self, num_sample: int, **kwargs) -> Dict:
+    def sample(self, num_sample: int, **kwargs) -> dict:
         """
         Sample num_sample of a synthetic protections using a pre-trained model.
 
